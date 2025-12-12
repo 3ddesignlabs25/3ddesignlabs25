@@ -1,11 +1,34 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills — Michael Butler</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Michael Butler</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Skill cards */
+.skill-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    transition: transform 0.2s, background 0.2s;
+}
+.skill-card:hover {
+    transform: scale(1.02);
+    background: #1d222b;
+}
+.skill-card h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+.skill-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+</style>
 </head>
 <body>
 
@@ -23,63 +46,90 @@
 </nav>
 
 <header>
-    <h1>Skills</h1>
+<h1>Skills</h1>
+<p>Expertise across embedded systems, electronics, 3D printing, and project workflow.</p>
 </header>
 
 <section>
 
+<div class="skill-card">
     <h2>Embedded Systems & Microcontrollers</h2>
     <ul>
         <li>ESP32 (C6, S3, WROOM), Arduino, Raspberry Pi Zero 2 W</li>
-        <li>GPIO control, sensors, relays, LED drivers, I2C/SPI/UART</li>
-        <li>Real-time systems, interrupts, and low-level troubleshooting</li>
-        <li>Firmware optimization and modular embedded software design</li>
+        <li>GPIO control, sensors, relays, motors, LED drivers, I2C/SPI/UART interfaces</li>
+        <li>Real-time systems, interrupts, low-level firmware debugging, and optimization</li>
+        <li>Custom hardware integration: creating modular, scalable embedded devices</li>
+        <li>Firmware development in C/C++ and MicroPython for IoT and automation projects</li>
+        <li>Prototyping from breadboard to PCB for functional proof-of-concept devices</li>
     </ul>
+</div>
 
-    <h2>Programming</h2>
+<div class="skill-card">
+    <h2>Programming & Software</h2>
     <ul>
-        <li>C++ for embedded systems and Arduino-style frameworks</li>
-        <li>Python for automation, networking tools, and scripting</li>
-        <li>Basic web UI for microcontroller configuration (HTML/JS)</li>
-        <li>Git & GitHub version control</li>
+        <li>C++ & C for embedded systems and microcontroller frameworks</li>
+        <li>Python for automation, networking, scripting, and tool development</li>
+        <li>JavaScript, HTML, CSS for web interfaces and IoT dashboards</li>
+        <li>Arduino and MicroPython environments</li>
+        <li>Git & GitHub for version control and collaborative development</li>
+        <li>Basic experience with Linux scripting and shell automation</li>
     </ul>
-
+</div>
+    
+<div class="skill-card">
     <h2>Electronics & Prototyping</h2>
     <ul>
-        <li>Designing, soldering, and testing custom circuits</li>
-        <li>Breadboard → prototype → PCB workflow</li>
-        <li>Power regulation, logic-level design, component selection</li>
-        <li>Interfacing microcontrollers with hardware (motors, LEDs, sensors)</li>
+        <li>Designing, soldering, and testing custom circuits from concept to functional prototype</li>
+        <li>Breadboard → prototype → PCB workflow for rapid iteration</li>
+        <li>Power regulation, logic-level design, and optimal component selection</li>
+        <li>Interfacing microcontrollers with hardware: motors, LEDs, sensors, relays</li>
+        <li>Troubleshooting and debugging hardware/software integration</li>
+        <li>Creating modular and scalable electronics for embedded projects</li>
     </ul>
+</div>
 
+<div class="skill-card">
     <h2>3D Printing & CAD</h2>
     <ul>
-        <li>FDM printing with PETG (tuned for Ender 3 Neo)</li>
-        <li>FreeCAD for mechanical models & functional prototypes</li>
-        <li>Designing enclosures, mounts, interlocking parts</li>
-        <li>Tinkercad for rapid-iteration drafting</li>
+        <li>FDM printing with PETG, PLA, ABS, TPU, and other materials</li>
+        <li>Designing functional enclosures, mounts, interlocking and mechanical parts</li>
+        <li>FreeCAD for precise mechanical modeling and rapid prototyping</li>
+        <li>Tinkercad for fast concept iteration and drafting</li>
+        <li>Optimizing print settings for strength, flexibility, and material efficiency</li>
+        <li>Integrating CAD designs with electronics and embedded systems projects</li>
     </ul>
+</div>
 
+<div class="skill-card">
     <h2>Networking & Automation</h2>
     <ul>
-        <li>WireGuard device-to-device tunnels</li>
-        <li>Local network automation & microcontroller integration</li>
-        <li>Wi-Fi auto-connect, fallback networks, failover logic</li>
+        <li>WireGuard and other secure device-to-device VPN tunnels</li>
+        <li>Local network automation for IoT and microcontroller integration</li>
+        <li>Wi-Fi auto-connect, fallback networks, and failover logic</li>
+        <li>Remote monitoring and control of embedded systems</li>
+        <li>Custom scripts and tools to streamline repetitive tasks</li>
+        <li>Integration of sensors, relays, and actuators for automated workflows</li>
     </ul>
+</div>
 
+<div class="skill-card">
     <h2>Workflow & Project Skills</h2>
     <ul>
-        <li>Rapid prototyping: electronics + firmware + CAD</li>
-        <li>Structured project documentation</li>
-        <li>Debugging hardware/software interactions</li>
-        <li>End-to-end development from concept to finished device</li>
+        <li>End-to-end project development from concept to functional prototype</li>
+        <li>Rapid iteration combining electronics, firmware, and CAD design</li>
+        <li>Structured documentation for reproducible builds and troubleshooting</li>
+        <li>Debugging hardware/software interactions efficiently</li>
+        <li>Optimizing workflows for small-batch or custom production</li>
+        <li>Project planning, component sourcing, and timeline management</li>
     </ul>
+</div>
 
 </section>
 
 <footer>
-    © 2025 Michael Butler — Portfolio
+© 2025 Michael Butler — Portfolio
 </footer>
 
 </body>
 </html>
+
