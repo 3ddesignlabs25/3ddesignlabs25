@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Services — Michael Butler</title>
+
+<style>
+  :root{
+    --bg: #0d1117;
+    --panel: #161b22;
+    --border: #30363d;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --text: #e6edf3;
+  }
+  html,body{
+    height:100%;
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+  }
+
+  /* NAV */
+  nav{
+    background:var(--panel);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  nav ul{
+    list-style:none;
+    margin:0;
+    padding:10px 20px;
+    display:flex;
+    justify-content:center;
+    gap:22px;
+  }
+  nav a{
+    color:var(--text);
+    text-decoration:none;
+    opacity:0.88;
+    font-size:15px;
+  }
+  nav a:hover{ opacity:1; text-decoration:underline; }
+
+  /* HEADER */
+  header{
+    text-align:center;
+    padding:36px 18px;
+    background:var(--panel);
+    border-bottom:1px solid var(--border);
+  }
+  header h1{ margin:0; font-size:26px; }
+  header p{ margin:6px 0 0 0; color:var(--muted); font-size:14px; }
+
+  /* CONTENT */
+  main{
+    max-width:900px;
+    margin:40px auto;
+    padding:0 18px;
+  }
+
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:24px;
+  }
+
+  .service-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:24px;
+    transition:0.2s ease;
+  }
+  .service-card:hover{
+    border-color:var(--accent);
+    transform:translateY(-4px);
+  }
+
+  .service-card h3{
+    margin-top:0;
+    font-size:20px;
+    color:var(--accent);
+  }
+  .service-card p{
+    margin:10px 0;
+    line-height:1.5;
+    font-size:15px;
+    color:var(--muted);
+  }
+
+  .pricing{
+    margin-top:8px;
+    font-size:14px;
+    color:var(--text);
+  }
+
+  .cta{
+    text-align:center;
+    margin-top:40px;
+    font-size:17px;
+  }
+  .cta a{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:bold;
+  }
+  .cta a:hover{ text-decoration:underline; }
+
+  footer{
+    text-align:center;
+    padding:28px 8px;
+    color:var(--muted);
+    margin-top:50px;
+    font-size:14px;
+  }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="3dprints.html">3D Prints</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h1>My Services</h1>
+  <p>Professional 3D printing, design, and embedded systems work</p>
+</header>
+
+<main>
+
+  <div class="services-grid">
+
+    <!-- 3D PRINTING -->
+    <div class="service-card">
+      <h3>Custom 3D Printing</h3>
+      <p>High-quality FDM printing using PETG, PLA+, or specialty filaments. Perfect for prototypes, functional parts, decorative prints, and small-batch production.</p>
+      <p class="pricing"><strong>Starting at:</strong> $5 + material cost</p>
+    </div>
+
+    <!-- 3D DESIGN -->
+    <div class="service-card">
+      <h3>3D Modeling & CAD Design</h3>
+      <p>Need a custom part, enclosure, or model? I design clean, accurate models using FreeCAD and Tinkercad, optimized for real-world printing.</p>
+      <p class="pricing"><strong>Starting at:</strong> $15 per model</p>
+    </div>
+
+    <!-- MICROCONTROLLER -->
+    <div class="service-card">
+      <h3>Embedded Systems & Microcontrollers</h3>
+      <p>ESP32, Arduino, and Raspberry Pi projects. I can build small automation systems, displays, simple server checkers, GPIO controls, and more.</p>
+      <p class="pricing"><strong>Starting at:</strong> $20 per project</p>
+    </div>
+
+    <!-- ELECTRONICS -->
+    <div class="service-card">
+      <h3>Electronics & Small Circuits</h3>
+      <p>Custom LED setups, sensors, relays, simple PCB layouts, and other micro-projects. Built clean and tested on a dedicated safe bench.</p>
+      <p class="pricing"><strong>Starting at:</strong> $10 per build</p>
+    </div>
+
+    <!-- TECH SUPPORT -->
+    <div class="service-card">
+      <h3>Technical Help & Troubleshooting</h3>
+      <p>Help with printers, microcontrollers, wiring, firmware, Raspberry Pi setup, and basic programming issues. Remote or local help available.</p>
+      <p class="pricing"><strong>Starting at:</strong> $10</p>
+    </div>
+
+  </div>
+
+  <div class="cta">
+    Ready to start a project?  
+    <br><br>
+    <a href="contactform.html">Contact me here</a>
+  </div>
+
+</main>
+
+<footer>
+  © 2025 Michael Butler — Portfolio
+</footer>
+
+</body>
+</html>
