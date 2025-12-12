@@ -4,7 +4,111 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Get a Quote — Michael Butler</title>
-<link rel="stylesheet" href="styles.css">
+<style>
+/* ========== GLOBAL ========== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
+}
+a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+nav {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+nav ul {
+    margin: 0;
+    padding: 10px 20px;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 25px;
+}
+nav a {
+    color: #e6edf3;
+    opacity: 0.85;
+}
+nav a:hover { opacity:1; }
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+}
+header h1 { font-size:2.5rem; margin-bottom:10px; }
+header p { font-size:1.2rem; opacity:0.8; }
+
+section {
+    padding: 50px 20px;
+    max-width: 900px;
+    margin:auto;
+}
+
+/* ========== CARD STYLING ========== */
+.contact-form, .contact-info {
+    max-width: 700px;
+    margin: 25px auto;
+    background: #161b22;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+}
+.contact-form label {
+    display:block;
+    margin-top:12px;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width:100%;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #30363d;
+    background:#0d1117;
+    color:#e6edf3;
+    resize:vertical;
+}
+.contact-form .small { font-size:0.9rem; opacity:0.75; }
+
+.contact-form button {
+    margin-top:15px;
+    padding:12px 18px;
+    border-radius:8px;
+    border:none;
+    background:#30363d;
+    color:#e6edf3;
+    cursor:pointer;
+    font-weight:600;
+    transition: background 0.2s, transform 0.12s;
+}
+.contact-form button:hover { background:#50595f; transform: translateY(-2px); }
+
+.result {
+    margin-top:18px;
+    padding:14px;
+    background:#0d1117;
+    border:1px solid #30363d;
+    border-radius:8px;
+    color:#e6edf3;
+}
+
+/* responsive */
+@media (max-width:768px) { nav ul { flex-direction:column; gap:10px; padding:15px; } }
+</style>
 </head>
 <body>
 
@@ -27,23 +131,26 @@
 </header>
 
 <section>
+    <!-- Contact Info -->
+    <div class="contact-info">
+        <p><strong>From concept to creation, let’s make it real.</strong></p>
+        <p>Email: <a href="mailto:3d.designlabs@gmail.com">3d.designlabs@gmail.com</a></p>
+        <p>Phone: <a href="tel:+19094350542">+1 (909) 435-0542</a></p>
+    </div>
+
+    <!-- Quote Form -->
     <div class="contact-form">
-
         <form action="https://formspree.io/f/xwpgwdnk" method="POST">
+            <h2>Project Quote</h2>
+            <p class="small">Select a service below — the form will adapt to the type of work.</p>
 
-            <h3>Your Contact Info</h3>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
 
-            <label for="name">Your Name</label>
-            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
 
-            <label for="email">Your Email</label>
-            <input type="email" name="email" id="email" placeholder="you@example.com" required>
-
-            <hr style="border:1px solid #30363d; margin:25px 0;">
-
-            <h3>Service Details</h3>
-
-            <label for="service">Select a Service</label>
+            <label for="service">Service Type</label>
             <select id="service" name="service" required>
                 <option value="">Choose one...</option>
                 <option value="3D Printing">3D Printing</option>
@@ -55,47 +162,41 @@
                 <option value="Consulting / Tech Support">Consulting / Tech Support</option>
             </select>
 
-            <!-- 3D PRINTING FIELDS -->
-            <div id="printing-fields" style="display:none; margin-top:20px;">
-
+            <!-- 3D printing fields -->
+            <div id="printing-fields" style="display:none; margin-top:15px;">
                 <label for="material">Material</label>
                 <select id="material" name="material">
                     <option value="PLA">PLA</option>
                     <option value="PETG">PETG</option>
                     <option value="ABS">ABS</option>
-
-                    <!-- ✅ TPU Added -->
                     <option value="TPU">TPU</option>
                 </select>
 
-                <label for="length">Length (mm)</label>
-                <input type="number" id="length" name="length" placeholder="e.g., 120">
+                <div style="display:flex; gap:10px; margin-top:10px;">
+                    <input type="number" id="length" name="length" placeholder="Length mm">
+                    <input type="number" id="width" name="width" placeholder="Width mm">
+                    <input type="number" id="height" name="height" placeholder="Height mm">
+                </div>
 
-                <label for="width">Width (mm)</label>
-                <input type="number" id="width" name="width" placeholder="e.g., 60">
-
-                <label for="height">Height (mm)</label>
-                <input type="number" id="height" name="height" placeholder="e.g., 40">
-
-                <p style="opacity:0.7; font-size:0.9rem;">
-                    *Final pricing may vary depending on infill, supports, and geometry.
-                </p>
-            </div>
-
-            <div style="margin-top:25px;">
-                <h3>Estimated Price</h3>
-                <p id="quote-result" style="font-size:1.2rem; font-weight:bold;">$0.00</p>
+                <label for="infill">Infill Factor</label>
+                <select id="infill" name="infill">
+                    <option value="0.12">Low (12%)</option>
+                    <option value="0.15" selected>Normal (15%)</option>
+                    <option value="0.25">High (25%)</option>
+                </select>
             </div>
 
             <label for="notes">Project Notes</label>
-            <textarea name="notes" id="notes" rows="6" placeholder="Describe your project…"></textarea>
+            <textarea id="notes" name="notes" rows="5" placeholder="Describe your project..."></textarea>
 
-            <input type="hidden" name="final_quote" id="final-quote-value">
+            <input type="hidden" id="final-quote" name="final_quote">
 
-            <button type="submit">Submit Quote Request</button>
+            <button type="button" id="calcBtn">Calculate Quote</button>
 
+            <div id="quote-result" class="result" style="display:none;"></div>
+
+            <button type="submit" style="margin-top:15px;">Submit Request</button>
         </form>
-
     </div>
 </section>
 
@@ -104,53 +205,47 @@
 </footer>
 
 <script>
-const serviceSelect = document.getElementById("service");
-const printingFields = document.getElementById("printing-fields");
-const result = document.getElementById("quote-result");
-const finalQuoteField = document.getElementById("final-quote-value");
+// Material cost per gram with 20% markup
+const materialCost = { PLA:0.072, PETG:0.084, ABS:0.108, TPU:0.114 };
+const serviceEl = document.getElementById('service');
+const printingFields = document.getElementById('printing-fields');
+const calcBtn = document.getElementById('calcBtn');
+const quoteResult = document.getElementById('quote-result');
+const finalQuoteInput = document.getElementById('final-quote');
 
-// Material cost per cubic cm (base cost + 20% business markup)
-const materialCosts = {
-    PLA: 0.075 * 1.2,
-    PETG: 0.085 * 1.2,
-    ABS: 0.090 * 1.2,
-
-    // ✅ TPU cost estimate added
-    TPU: 0.095 * 1.2
-};
-
-serviceSelect.addEventListener("change", () => {
-    if (serviceSelect.value === "3D Printing") {
-        printingFields.style.display = "block";
-    } else {
-        printingFields.style.display = "none";
-        result.textContent = "$0.00";
-    }
-    calculateQuote();
+// Toggle printing fields
+serviceEl.addEventListener('change', ()=>{
+    printingFields.style.display = (serviceEl.value==='3D Printing')?'block':'none';
+    quoteResult.style.display='none';
+    finalQuoteInput.value='';
 });
 
-function calculateQuote() {
-    if (serviceSelect.value !== "3D Printing") {
-        result.textContent = "$0.00";
-        finalQuoteField.value = "$0.00";
-        return;
+// Calculate quote
+calcBtn.addEventListener('click', ()=>{
+    if(serviceEl.value==='3D Printing'){
+        const material = document.getElementById('material').value;
+        const l = parseFloat(document.getElementById('length').value)||0;
+        const w = parseFloat(document.getElementById('width').value)||0;
+        const h = parseFloat(document.getElementById('height').value)||0;
+        const infill = parseFloat(document.getElementById('infill').value)||0.15;
+
+        if(!l||!w||!h){ alert('Enter L/W/H'); return; }
+
+        const volume = l*w*h;
+        const weight = volume*infill/1000;
+        const base = 25; // labor/setup
+        const cost = (weight*materialCost[material]+base).toFixed(2);
+
+        quoteResult.style.display='block';
+        quoteResult.innerHTML=`<strong>Estimate: $${cost}</strong><br><span class="small">Material: ${material}, Est. ${weight.toFixed(1)} g</span>`;
+        finalQuoteInput.value=cost;
+    } else {
+        // default base for other services
+        const cost=50;
+        quoteResult.style.display='block';
+        quoteResult.innerHTML=`<strong>Estimate: $${cost}</strong>`;
+        finalQuoteInput.value=cost;
     }
-
-    const material = document.getElementById("material").value;
-    const l = parseFloat(document.getElementById("length").value) || 0;
-    const w = parseFloat(document.getElementById("width").value) || 0;
-    const h = parseFloat(document.getElementById("height").value) || 0;
-
-    const volume = (l * w * h) / 1000;
-    const cost = volume * materialCosts[material];
-    const formatted = `$${cost.toFixed(2)}`;
-
-    result.textContent = formatted;
-    finalQuoteField.value = formatted;
-}
-
-document.querySelectorAll("input, select").forEach(el => {
-    el.addEventListener("input", calculateQuote);
 });
 </script>
 
