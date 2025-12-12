@@ -6,7 +6,6 @@
 <title>Instant Quote — Michael Butler</title>
 
 <style>
-/* Global Match to Portfolio */
 body {
     background: #0d1117;
     color: #e6edf3;
@@ -22,7 +21,6 @@ h1 {
     margin-top: 20px;
 }
 
-/* Card Style Container - Matches Buttons & Site Theme */
 .container {
     max-width: 600px;
     margin: 40px auto;
@@ -34,7 +32,6 @@ h1 {
     text-align: left;
 }
 
-/* Labels & Inputs */
 label {
     display: block;
     margin-top: 15px;
@@ -52,7 +49,6 @@ select, input {
     margin-bottom: 15px;
 }
 
-/* Button: Same Style as Landing Buttons */
 button {
     width: 100%;
     padding: 15px;
@@ -70,7 +66,6 @@ button:hover {
     transform: scale(1.03);
 }
 
-/* Result Box */
 .result-box {
     margin-top: 20px;
     padding: 20px;
@@ -80,7 +75,6 @@ button:hover {
     display: none;
 }
 
-/* Submit Link Button Matching Your Style */
 .submit-link {
     display: block;
     margin-top: 20px;
@@ -114,6 +108,19 @@ button:hover {
         <option value="repair">Tech Support / Repair</option>
     </select>
 
+    <label>Material</label>
+    <select id="material">
+        <option value="pla">PLA (0.072 per gram)</option>
+        <option value="petg">PETG (0.084 per gram)</option>
+        <option value="tpu">TPU (0.12 per gram)</option>
+        <option value="esp32">ESP32 ($7.20)</option>
+        <option value="wiring">Wiring Pack ($3.00)</option>
+        <option value="pcb">PCB Prototype ($12.00)</option>
+    </select>
+
+    <label>Material Quantity</label>
+    <input type="number" id="quantity" placeholder="Enter grams, mL, or quantity">
+
     <label>Difficulty</label>
     <select id="difficulty">
         <option value="1">Easy</option>
@@ -126,9 +133,6 @@ button:hover {
         <option value="1">No</option>
         <option value="1.3">Yes — Rush (+30%)</option>
     </select>
-
-    <label>Material Cost (USD)</label>
-    <input type="number" id="materials" placeholder="Enter estimated material cost">
 
     <button onclick="calculateQuote()">Generate Quote</button>
 
@@ -146,20 +150,39 @@ button:hover {
 <script>
 function calculateQuote() {
     const service = document.getElementById("service").value;
+    const material = document.getElementById("material").value;
+    const qty = parseFloat(document.getElementById("quantity").value) || 0;
     const difficulty = parseFloat(document.getElementById("difficulty").value);
     const rush = parseFloat(document.getElementById("rush").value);
-    const materials = parseFloat(document.getElementById("materials").value) || 0;
 
     // Base service prices
     let base = 0;
     let time = "";
 
-    if (service === "print") { base = 25; time = "1–2 days"; }
+    if (service === "print") { base = 25; time = "1–4 days"; }
     if (service === "cad") { base = 40; time = "1–3 days"; }
-    if (service === "embedded") { base = 75; time = "3–7 days"; }
-    if (service === "repair") { base = 30; time = "1–2 days"; }
+    if (service === "embedded system") { base = 75; time = "1-2 weeks"; }
+    if (service === "repair") { base = 30; time = "1–4 days"; }
 
-    let price = (base * difficulty * rush) + materials;
+    // Material pricing with 20% markup included
+    let materialCost = 0;
+
+    const prices = {
+        pla: 0.072,
+        petg: 0.084,
+        tpu: 0.12,
+        esp32: 7.20,
+        wiring: 3.00,
+        pcb: 12.00
+    };
+
+    if (material === "pla" || material === "petg" || material === "tpu" ) {
+        materialCost = prices[material] * qty;
+    } else {
+        materialCost = prices[material] * qty;
+    }
+
+    let price = materialCost + (base * difficulty * rush);
 
     document.getElementById("price").innerText = "Estimated Price: $" + price.toFixed(2);
     document.getElementById("time").innerText = "Estimated Turnaround: " + time;
