@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instant Quote — Michael Butler</title>
+
+<style>
+/* Global Match to Portfolio */
+body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #58a6ff;
+    margin-top: 20px;
+}
+
+/* Card Style Container - Matches Buttons & Site Theme */
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #161b22;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    border: 1px solid #30363d;
+    text-align: left;
+}
+
+/* Labels & Inputs */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select, input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    background: #0d1117;
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* Button: Same Style as Landing Buttons */
+button {
+    width: 100%;
+    padding: 15px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    color: #e6edf3;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+button:hover {
+    background: #1d222b;
+    transform: scale(1.03);
+}
+
+/* Result Box */
+.result-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: #0d1117;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+    display: none;
+}
+
+/* Submit Link Button Matching Your Style */
+.submit-link {
+    display: block;
+    margin-top: 20px;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    background: #58a6ff;
+    color: #0d1117;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.submit-link:hover {
+    background: #79c0ff;
+    transform: scale(1.03);
+}
+</style>
+
+</head>
+<body>
+
+<h1>Instant Project Quote</h1>
+
+<div class="container">
+    <label>Service Type</label>
+    <select id="service">
+        <option value="print">3D Printing</option>
+        <option value="cad">CAD Design</option>
+        <option value="embedded">Embedded System Prototype</option>
+        <option value="repair">Tech Support / Repair</option>
+    </select>
+
+    <label>Difficulty</label>
+    <select id="difficulty">
+        <option value="1">Easy</option>
+        <option value="1.5">Medium</option>
+        <option value="2">Hard</option>
+    </select>
+
+    <label>Rush Order?</label>
+    <select id="rush">
+        <option value="1">No</option>
+        <option value="1.3">Yes — Rush (+30%)</option>
+    </select>
+
+    <label>Material Cost (USD)</label>
+    <input type="number" id="materials" placeholder="Enter estimated material cost">
+
+    <button onclick="calculateQuote()">Generate Quote</button>
+
+    <div class="result-box" id="resultBox">
+        <h3>Estimated Quote</h3>
+        <p id="price"></p>
+        <p id="time"></p>
+
+        <a class="submit-link" href="https://formspree.io/f/xwpgwdnk">
+            Submit Your Project
+        </a>
+    </div>
+</div>
+
+<script>
+function calculateQuote() {
+    const service = document.getElementById("service").value;
+    const difficulty = parseFloat(document.getElementById("difficulty").value);
+    const rush = parseFloat(document.getElementById("rush").value);
+    const materials = parseFloat(document.getElementById("materials").value) || 0;
+
+    // Base service prices
+    let base = 0;
+    let time = "";
+
+    if (service === "print") { base = 25; time = "1–2 days"; }
+    if (service === "cad") { base = 40; time = "1–3 days"; }
+    if (service === "embedded") { base = 75; time = "3–7 days"; }
+    if (service === "repair") { base = 30; time = "1–2 days"; }
+
+    let price = (base * difficulty * rush) + materials;
+
+    document.getElementById("price").innerText = "Estimated Price: $" + price.toFixed(2);
+    document.getElementById("time").innerText = "Estimated Turnaround: " + time;
+
+    document.getElementById("resultBox").style.display = "block";
+}
+</script>
+
+</body>
+</html>
