@@ -1,73 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Contact Form — Michael Butler</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Michael Butler</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+/* Contact form styling */
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+    background: #161b22;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+}
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #30363d;
+    background: #0d1117;
+    color: #e6edf3;
+    resize: vertical;
+}
+.contact-form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background: #30363d;
+    color: #e6edf3;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.contact-form button:hover {
+    background: #50595f;
+}
+</style>
 </head>
 <body>
 
-  <nav>
+<!-- NAVIGATION -->
+<nav>
     <ul>
-      <li><a href="index.html">about</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="3dprints.html">3D Prints</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="3dprints.html">3D Prints</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
     </ul>
-  </nav>
+</nav>
 
-  <header>
-    <h1>Contact Me</h1>
-    <p>Interested in working together or discussing a project?</p>
-  </header>
+<header>
+    <h1>Contact</h1>
+</header>
 
-  <main>
-    <div class="contact-box">
-      <p style="font-size:18px;">Fill out the form below with your contact information and project idea, and I'll get back to you as soon as possible.</p>
+<section>
+    <div class="contact-form">
+        <form action="https://formspree.io/f/xwpgwdnk" method="POST">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
 
-      <form id="contactForm" action="https://formspree.io/f/mvgevlbe" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <input type="text" name="phone" placeholder="Phone Number (optional)">
-        <textarea name="message" placeholder="Describe your project idea..." required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
 
-      <p id="successMessage" class="success-message">Message sent! I'll contact you soon.</p>
+            <label for="message">Message</label>
+            <textarea name="message" id="message" rows="6" required></textarea>
 
-      <div class="alternate-contact">
-        <p>Prefer another way? Reach me directly via Google Voice: <a href="tel:+19094350542">(909) 435-0542</a></p>
-        <p>or email me @ <a href="mailto:d3.designlabs25@gmail.com">3d.designlabs25@gmail.com</a></p>
-      </div>
+            <button type="submit">Send</button>
+        </form>
     </div>
-  </main>
+</section>
 
-  <footer>
+<footer>
     © 2025 Michael Butler — Portfolio
-  </footer>
-
-<script>
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
-    const form = e.target;
-
-    const response = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-    });
-
-    if (response.ok) {
-        form.reset();
-        document.getElementById("successMessage").style.display = "block";
-    } else {
-        alert("Oops! Something went wrong. Please try again.");
-    }
-});
-</script>
+</footer>
 
 </body>
 </html>
