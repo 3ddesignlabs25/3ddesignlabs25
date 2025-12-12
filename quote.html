@@ -1,161 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project Quote Calculator</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Get a Quote — Michael Butler</title>
+
+<!-- ========== YOUR CSS (integrated) ========== -->
 <style>
+/* ========== GLOBAL STYLES ========== */
 body {
+    margin: 0;
+    font-family: Arial, sans-serif;
     background: #0d1117;
     color: #e6edf3;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+    line-height: 1.6;
 }
 
-.container {
-    max-width: 500px;
-    margin: auto;
+/* Links */
+a {
+    color: #58a6ff;
+    text-decoration: none;
+    transition: color 0.2s, opacity 0.2s;
+}
+a:hover {
+    color: #1f6feb;
+    opacity: 1;
+}
+
+/* ========== NAVIGATION ========== */
+nav {
     background: #161b22;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #30363d;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    border-bottom: 1px solid #30363d;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-h2 {
+nav ul {
+    margin: 0;
+    padding: 10px 20px;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 25px;
+}
+
+nav a {
+    color: #e6edf3;
+    font-size: 1rem;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+/* ========== HEADER ========== */
+header {
     text-align: center;
+    padding: 50px 20px;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* ========== SECTION / CONTENT ========== */
+section {
+    padding: 50px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+h2, h3 {
+    border-bottom: 2px solid #30363d;
+    padding-bottom: 5px;
     margin-bottom: 20px;
 }
 
-label {
+ul {
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+/* ========== PROJECT / SERVICE CARDS ========== */
+.project {
+    background: #161b22;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+    transition: transform 0.2s, background 0.2s;
+    cursor: pointer;
+}
+
+.project:hover {
+    transform: scale(1.02);
+    background: #1d222b;
+}
+
+.project img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid #30363d;
+}
+
+/* ========== CODE BLOCKS ========== */
+code, pre {
+    background: #0a0f14;
+    padding: 10px;
     display: block;
-    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #30363d;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+}
+
+/* ========== CONTACT PAGE (USED FOR QUOTE CARD) ========== */
+.contact-info, .contact-form {
+    max-width: 700px;
+    margin: 20px auto;
+    background: #161b22;
+    padding: 22px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
     font-weight: bold;
 }
 
-select, input {
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
-    background: #0d1117;
+    border-radius: 6px;
     border: 1px solid #30363d;
+    background: #0d1117;
     color: #e6edf3;
-    border-radius: 8px;
+    resize: vertical;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 25px;
-    background: #238636;
+.contact-form .small {
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+.contact-form .row {
+    display: flex;
+    gap: 12px;
+}
+
+.contact-form .row .col {
+    flex: 1;
+}
+
+.contact-form .inline {
+    display: inline-block;
+    width: auto;
+}
+
+/* Buttons */
+.contact-form button,
+.contact-form .submit-link {
+    margin-top: 15px;
+    padding: 12px 18px;
+    border-radius: 8px;
     border: none;
-    color: white;
-    font-size: 1rem;
-    border-radius: 8px;
+    background: #30363d;
+    color: #e6edf3;
     cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
+    transition: background 0.2s, transform 0.12s;
+    font-weight: 600;
 }
 
-button:hover {
-    background: #2ea043;
+.contact-form button:hover,
+.contact-form .submit-link:hover {
+    background: #50595f;
+    transform: translateY(-2px);
 }
 
-#result {
-    margin-top: 25px;
-    padding: 15px;
+/* result / badge */
+.result {
+    margin-top: 18px;
+    padding: 14px;
     background: #0d1117;
     border: 1px solid #30363d;
     border-radius: 8px;
+    color: #e6edf3;
 }
 
-.note {
-    font-size: 0.85rem;
-    opacity: 0.6;
-    margin-top: 10px;
+/* Landing buttons */
+.landing-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.landing-buttons a {
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    background: #161b22;
+    color: #e6edf3;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+    border: 1px solid #30363d;
+}
+
+.landing-buttons a:hover {
+    background: #1d222b;
+    transform: scale(1.05);
+}
+
+/* ========== FOOTER ========== */
+footer {
     text-align: center;
+    padding: 20px;
+    opacity: 0.6;
+    margin-top: 50px;
+}
+
+/* ========== RESPONSIVE STYLING ========== */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    nav a {
+        font-size: 1.1rem;
+        text-align: center;
+        display: block;
+    }
+    .landing-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-buttons a {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* ========== Small overrides for the form visuals ========== */
+.contact-form h2 {
+    margin-top: 0;
+    color: #58a6ff;
+}
+.contact-form .muted {
+    color: #9aa4b2;
+    font-size: 0.95rem;
 }
 </style>
+
 </head>
 <body>
 
-<div class="container">
-    <h2>Project Quote Calculator</h2>
+<!-- Optional: small header -->
+<header>
+    <h1>Michael Butler</h1>
+    <p>Embedded Systems • 3D Fabrication • Automation</p>
+</header>
 
-    <label>Material</label>
-    <select id="material">
-        <option value="PLA">PLA</option>
-        <option value="PETG">PETG</option>
-        <option value="TPU">TPU</option>
-        <option value="Resin">Resin</option>
+<section>
+  <div class="contact-form" id="quoteCard">
+    <h2>Get a Quote</h2>
+    <p class="muted">Select a service below — the form will adapt to the type of work.</p>
+
+    <label for="service">Service Type</label>
+    <select id="service">
+      <option value="3d">3D Printing</option>
+      <option value="embedded">Embedded Systems Build</option>
+      <option value="coding">Coding / Firmware Development</option>
+      <option value="assembly">Electronics Assembly / Wiring</option>
+      <option value="repair">Product Repair</option>
+      <option value="cad">CAD Modeling / Design</option>
+      <option value="consult">Consulting / Tech Support</option>
     </select>
 
-    <label>Length (mm)</label>
-    <input type="number" id="length" placeholder="e.g., 100">
+    <!-- ========== 3D PRINTING FIELDS (shown only when 3D selected) ========== -->
+    <div id="printFields" style="margin-top:10px; display:none;">
+        <label for="material">Material</label>
+        <select id="material">
+            <option value="PLA">PLA</option>
+            <option value="PETG">PETG</option>
+            <option value="TPU">TPU</option>
+        </select>
 
-    <label>Width (mm)</label>
-    <input type="number" id="width" placeholder="e.g., 60">
+        <div class="row" style="margin-top:8px;">
+            <div class="col">
+                <label for="length">Length (mm)</label>
+                <input id="length" type="number" placeholder="e.g., 100">
+            </div>
+            <div class="col">
+                <label for="width">Width (mm)</label>
+                <input id="width" type="number" placeholder="e.g., 60">
+            </div>
+            <div class="col">
+                <label for="height">Height (mm)</label>
+                <input id="height" type="number" placeholder="e.g., 30">
+            </div>
+        </div>
 
-    <label>Height (mm)</label>
-    <input type="number" id="height" placeholder="e.g., 30">
+        <label for="infill" style="margin-top:12px;">Estimated Infill Factor</label>
+        <select id="infill" class="inline" style="width:120px;">
+            <option value="0.12">Low (12%)</option>
+            <option value="0.15" selected>Normal (15%)</option>
+            <option value="0.25">High (25%)</option>
+        </select>
+        <div class="small inline" style="margin-left:12px; vertical-align:middle; opacity:0.8;">
+            (Used to estimate material usage)
+        </div>
+    </div>
 
-    <label>Difficulty</label>
+    <!-- ========== GENERIC SERVICE FIELDS (shown when NOT 3D) ========== -->
+    <div id="serviceFields" style="margin-top:10px; display:none;">
+        <label>Base Service Price (you can change)</label>
+        <select id="basePrice">
+            <option value="25">3D-related small jobs (placeholder)</option>
+            <option value="75">Embedded Systems Build — $75</option>
+            <option value="60">Coding / Firmware Development — $60</option>
+            <option value="45">Electronics Assembly / Wiring — $45</option>
+            <option value="40">Product Repair — $40</option>
+            <option value="50">CAD Modeling / Design — $50</option>
+            <option value="35">Consulting / Tech Support — $35</option>
+        </select>
+
+        <label style="margin-top:12px;">Optional Add-on Cost (flat)</label>
+        <input id="addon" type="number" placeholder="e.g., extra parts $ / flat fee">
+    </div>
+
+    <!-- ========== COMMON FIELDS ========== -->
+    <label style="margin-top:12px;">Difficulty</label>
     <select id="difficulty">
         <option value="1">Easy (1×)</option>
         <option value="1.5">Medium (1.5×)</option>
         <option value="2">Hard (2×)</option>
     </select>
 
-    <label>Rush Order</label>
+    <label style="margin-top:12px;">Rush Order</label>
     <select id="rush">
         <option value="1">No</option>
-        <option value="1.25">Yes (25% extra)</option>
+        <option value="1.3">Yes — Rush (+30%)</option>
     </select>
 
-    <button onclick="calculateQuote()">Get Quote</button>
+    <button id="calcBtn">Generate Quote</button>
 
-    <div id="result"></div>
-    <p class="note">Pricing is an estimate. Actual cost may vary based on wall thickness, supports, slicing settings, and real material usage.</p>
-</div>
+    <div id="result" class="result" style="display:none;"></div>
 
+    <a id="submitLink" class="submit-link" style="display:none;" href="https://formspree.io/f/xwpgwdnk" target="_blank" rel="noopener">
+        Submit Your Project
+    </a>
+
+    <p class="small muted" style="margin-top:12px;">
+      Pricing is an estimate. Actual pricing may vary based on model complexity, wall thickness, supports, part count, and slicing results.
+    </p>
+  </div>
+</section>
+
+<footer>
+    © 2025 Michael Butler — Portfolio
+</footer>
+
+<!-- ========== SCRIPT ========== -->
 <script>
-// Base material costs with 20% markup included
-const materialCost = {
-    PLA: 0.06 * 1.20,     // per gram
-    PETG: 0.07 * 1.20,    // per gram
-    TPU: 0.10 * 1.20,     // per gram
-    Resin: 0.18 * 1.20    // per mL (treated as grams for simplicity)
+// Material costs (per gram) WITH 20% markup applied already:
+const materialPerGram = {
+  PLA: 0.06 * 1.20,   // 0.072/g
+  PETG: 0.07 * 1.20,  // 0.084/g
+  TPU: 0.10 * 1.20    // 0.12/g
 };
 
-function calculateQuote() {
-    const material = document.getElementById("material").value;
-    const length = parseFloat(document.getElementById("length").value);
-    const width = parseFloat(document.getElementById("width").value);
-    const height = parseFloat(document.getElementById("height").value);
-    const difficulty = parseFloat(document.getElementById("difficulty").value);
-    const rush = parseFloat(document.getElementById("rush").value);
+// Service base price defaults (used if NOT 3D)
+const defaultBaseForService = {
+  embedded: 75,
+  coding: 60,
+  assembly: 45,
+  repair: 40,
+  cad: 50,
+  consult: 35
+};
+
+const serviceEl = document.getElementById('service');
+const printFields = document.getElementById('printFields');
+const serviceFields = document.getElementById('serviceFields');
+const calcBtn = document.getElementById('calcBtn');
+const resultBox = document.getElementById('result');
+const submitLink = document.getElementById('submitLink');
+
+// Initialize UI on load
+function updateFormVisibility() {
+  const service = serviceEl.value;
+  if (service === '3d') {
+    printFields.style.display = 'block';
+    serviceFields.style.display = 'none';
+  } else {
+    printFields.style.display = 'none';
+    serviceFields.style.display = 'block';
+    // set base price selection to match chosen service if possible
+    const baseSelect = document.getElementById('basePrice');
+    // Map service to selectable option index if matching text exists
+    // We'll attempt to match by value in option text; keep simple fallback
+    if (service === 'embedded') baseSelect.value = '75';
+    if (service === 'coding') baseSelect.value = '60';
+    if (service === 'assembly') baseSelect.value = '45';
+    if (service === 'repair') baseSelect.value = '40';
+    if (service === 'cad') baseSelect.value = '50';
+    if (service === 'consult') baseSelect.value = '35';
+  }
+  // hide previous results when switching
+  resultBox.style.display = 'none';
+  submitLink.style.display = 'none';
+}
+
+// Attach change listener
+serviceEl.addEventListener('change', updateFormVisibility);
+updateFormVisibility(); // initial call
+
+// Helper: format currency
+function fmt(n) {
+  return '$' + n.toFixed(2);
+}
+
+// Main calculation
+calcBtn.addEventListener('click', function() {
+  const service = serviceEl.value;
+  const difficulty = parseFloat(document.getElementById('difficulty').value) || 1;
+  const rush = parseFloat(document.getElementById('rush').value) || 1;
+
+  // 3D Printing path
+  if (service === '3d') {
+    const material = document.getElementById('material').value;
+    const length = parseFloat(document.getElementById('length').value);
+    const width = parseFloat(document.getElementById('width').value);
+    const height = parseFloat(document.getElementById('height').value);
+    const infill = parseFloat(document.getElementById('infill').value) || 0.15;
 
     if (!length || !width || !height) {
-        document.getElementById("result").innerHTML = "Please enter all dimensions.";
-        return;
+      resultBox.style.display = 'block';
+      resultBox.innerHTML = '<strong>Please enter length, width, and height (mm).</strong>';
+      submitLink.style.display = 'none';
+      return;
     }
 
-    // Estimate material volume
-    let volume = length * width * height;
+    // Volume in mm^3
+    const volume = length * width * height;
 
-    // Convert to usable estimated weight: assume 15% density after infill
-    let estimatedWeight = (volume * 0.15) / 1000; // grams/mL
+    // Convert to estimated grams using infill factor and 1 g per 1000 mm^3 as a rough approximation
+    // (rough conversion: 1 g ≈ 1000 mm^3 for many filaments as used earlier)
+    const estimatedWeight = (volume * infill) / 1000; // grams
 
-    // Material pricing
-    let baseCost = estimatedWeight * materialCost[material];
+    // Material cost (per gram)
+    const perGram = materialPerGram[material] || materialPerGram['PLA'];
+    const materialCost = perGram * estimatedWeight;
 
-    // Multiply by difficulty + rush
-    let finalCost = baseCost * difficulty * rush;
+    // Base service price for 3D prints (setup / labor)
+    const baseService = 25; // small fixed base for printing jobs (changeable later)
 
-    document.getElementById("result").innerHTML =
-        `<strong>Estimated Price:</strong> $${finalCost.toFixed(2)}<br>
-         <small>Estimated material weight: ${estimatedWeight.toFixed(1)}g</small>`;
+    // Final cost
+    const final = (materialCost + (baseService * difficulty)) * rush;
+
+    resultBox.style.display = 'block';
+    resultBox.innerHTML = `
+      <strong>Estimate (3D Printing)</strong><br>
+      ${fmt(final)}<br>
+      <span class="small muted">Material: ${material} — est. ${estimatedWeight.toFixed(1)} g (volume ${volume.toLocaleString()} mm³)</span>
+    `;
+    submitLink.style.display = 'inline-block';
+    return;
+  }
+
+  // NON-3D path (generic services)
+  const basePriceSelect = document.getElementById('basePrice').value;
+  const basePrice = parseFloat(basePriceSelect) || defaultBaseForService[service] || 50;
+  const addon = parseFloat(document.getElementById('addon').value) || 0;
+
+  // Final cost
+  const final = (basePrice * difficulty + addon) * rush;
+
+  resultBox.style.display = 'block';
+  resultBox.innerHTML = `
+    <strong>Estimate (${serviceToLabel(service)})</strong><br>
+    ${fmt(final)}<br>
+    <span class="small muted">Base: ${fmt(basePrice)} • Add-ons: ${fmt(addon)} • Difficulty ×${difficulty} • Rush ×${rush}</span>
+  `;
+  submitLink.style.display = 'inline-block';
+});
+
+// Map service value to readable label
+function serviceToLabel(key) {
+  const map = {
+    '3d': '3D Printing',
+    'embedded': 'Embedded Systems Build',
+    'coding': 'Coding / Firmware Development',
+    'assembly': 'Electronics Assembly / Wiring',
+    'repair': 'Product Repair',
+    'cad': 'CAD Modeling / Design',
+    'consult': 'Consulting / Tech Support'
+  };
+  return map[key] || key;
 }
 </script>
 
