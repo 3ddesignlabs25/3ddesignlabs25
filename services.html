@@ -1,75 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services — 3D Design Labs</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Michael Butler</title>
+<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
+<!-- NAVIGATION -->
+<nav>
+    <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="3dprints.html">3D Prints</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
 <header>
-    <nav>
-        <a href="index.html">about</a>
-        <a href="skills.html">skills</a>
-        <a href="projects.html">projects</a>
-        <a href="3dprints.html">3D Prints</a>
-        <a href="contact.html">Contact</a>
-        <a href="services.html">Services</a>
-    </nav>
+    <h1>Services</h1>
 </header>
 
-<div class="container">
-    <h1>Services</h1>
-
-    <div class="service-card">
-        <h2>🖨️ 3D Printing</h2>
-        <p>High-quality 3D printing using PETG, PLA, and specialty filaments.  
-        Perfect for prototypes, functional parts, custom designs, and one-off prints.</p>
+<section>
+    <div class="project">
+        <h3>Custom Embedded Systems</h3>
+        <p>Design and development of microcontroller-based devices with ESP32, Arduino, and Raspberry Pi.</p>
     </div>
 
-    <div class="service-card">
-        <h2>📐 CAD Modeling</h2>
-        <p>Need a part designed from scratch?  
-        I create clean, precise 3D models in FreeCAD for printing, engineering, or visualization.</p>
+    <div class="project">
+        <h3>3D Printing & CAD</h3>
+        <p>Rapid prototyping using PETG and FreeCAD, designing enclosures, mounts, and functional parts.</p>
     </div>
 
-    <div class="service-card">
-        <h2>🛠️ Repair & Replication</h2>
-        <p>Broken plastic part? Out-of-production piece?  
-        I can reconstruct and replicate items with custom measurements.</p>
+    <div class="project">
+        <h3>Automation & Networking</h3>
+        <p>Local network automation, WireGuard device-to-device tunnels, IoT integration, and microcontroller control systems.</p>
     </div>
 
-    <div class="service-card">
-        <h2>🖥️Custom Embedded Systems </h2>
-        <p>I design and build small-scale embedded electronics tailored to your specific needs — from microcontroller-based prototypes to simple automation solutions. Whether you need a functional proof-of-concept, a custom ESP32 project, or a unique hardware solution for your home or workspace, I can create compact, reliable systems that bridge the gap between software and the real world.</p>
+    <div class="project">
+        <h3>Technical Support & Consulting</h3>
+        <p>Assistance with electronics, firmware troubleshooting, prototyping guidance, and project workflow advice.</p>
     </div>
-    
-    <div class="service-card">
-      <h2>💡 Tech Support &amp; Troubleshooting</h2>
-      <p>I offer straightforward, reliable help for everyday tech issues — from computer problems and device setup to network troubleshooting and small electronics glitches. If something isn’t working or you’re unsure how to get started, I’ll walk you through the fix or handle it for you so everything runs smoothly again.</p>
-    </div>
+</section>
 
-
-
-    <!-- CONTACT FORM FOR SERVICES -->
-    <form action="https://formspree.io/f/xwpgwdnk" method="POST">
-        <h2>Request a Quote</h2>
-
-        <label for="name">Your Name</label>
-        <input type="text" name="name" id="name" required />
-
-        <label for="email">Your Email</label>
-        <input type="email" name="email" id="email" required />
-
-        <label for="project">Project Description</label>
-        <textarea name="project" id="project" rows="5" required></textarea>
-
-        <button type="submit">Submit Request</button>
-    </form>
-
-</div>
+<footer>
+    © 2025 Michael Butler — Portfolio
+</footer>
 
 </body>
 </html>
