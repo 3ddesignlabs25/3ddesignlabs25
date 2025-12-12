@@ -3,10 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Contact — Michael Butler</title>
+<title>Contact Form — Michael Butler</title>
 
 <style>
-  /* Page layout + theme (self-contained so page renders even if style.css fails) */
   :root{
     --bg: #0d1117;
     --panel: #161b22;
@@ -25,7 +24,6 @@
     -moz-osx-font-smoothing:grayscale;
   }
 
-  /* NAV */
   nav{
     background:var(--panel);
     border-bottom:1px solid var(--border);
@@ -49,7 +47,6 @@
   }
   nav a:hover{ opacity:1; text-decoration:underline; }
 
-  /* Header */
   header{
     text-align:center;
     padding:36px 18px;
@@ -59,7 +56,6 @@
   header h1{ margin:0; font-size:26px; }
   header p{ margin:6px 0 0 0; color:var(--muted); font-size:14px; }
 
-  /* Content */
   main{ max-width:820px; margin:36px auto; padding:0 18px; }
   .contact-box{
     background:var(--panel);
@@ -69,24 +65,44 @@
   }
 
   .contact-box p{ margin:0 0 14px 0; font-size:17px; line-height:1.5; color:var(--text); }
-  .contact-card{ margin-top:6px; }
-  .contact-card p{ margin:8px 0; font-size:16px; color:var(--text); }
-  .contact-card a{ color:var(--accent); text-decoration:none; }
-  .contact-card a:hover{ text-decoration:underline; }
 
-  .small-note{ margin-top:18px; color:var(--muted); font-size:14px; }
+  input, textarea{
+    width:100%;
+    padding:12px;
+    border-radius:6px;
+    border:1px solid var(--border);
+    background:var(--bg);
+    color:var(--text);
+    font-size:16px;
+    margin-bottom:16px;
+  }
+  textarea{ height:150px; resize:vertical; }
+  button{
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    background:#238636;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  button:hover{ background:#2ea043; }
 
-  /* Footer */
+  .success-message{
+    text-align:center;
+    color:#2ea043;
+    margin-top:20px;
+    display:none;
+  }
+
   footer{ text-align:center; padding:28px 8px; color:var(--muted); font-size:14px; margin-top:30px; }
-
-  /* Responsive tweaks */
   @media (max-width:520px){
     nav ul{ gap:12px; padding:10px; }
     header{ padding:28px 14px; }
     .contact-box{ padding:18px; }
   }
 </style>
-
 </head>
 <body>
 
@@ -95,7 +111,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="skills.html">Skills</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="contact.html" aria-current="page">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
@@ -106,25 +122,43 @@
 
   <main>
     <div class="contact-box">
-      <p style="font-size:18px;">
-       <p> Interested in working together or discussing a project?<p>
-        </p> contact me and lets bring your vison to life.</p>
+      <p style="font-size:18px;">Fill out the form below with your contact information and project idea, and I'll get back to you as soon as possible.</p>
 
-      <div class="contact-card">
-        <p><strong>Email:</strong> <a href="mailto:3d_designslabs25@gmail.com">3d_designslabs25@gmail.com</a></p>
-        <p><strong>GitHub:</strong>
-          <a href="https://github.com/Stitch222-Kali" target="_blank" rel="noopener">Stitch222-Kali</a>
-        </p>
-        <p><strong>Google Voice:</strong> <a href="tel:+19094350542">(909) 435-0542</a></p>
+      <form id="contactForm" action="https://formspree.io/f/mvgevlbe" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="phone" placeholder="Phone Number (optional)">
+        <textarea name="message" placeholder="Describe your project idea..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
 
-        <p class="small-note">I respond to most messages within 24 hours.</p>
-      </div>
+      <p id="successMessage" class="success-message">Message sent! I'll contact you soon.</p>
     </div>
   </main>
 
   <footer>
     © 2025 Michael Butler — Portfolio
   </footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+        form.reset();
+        document.getElementById("successMessage").style.display = "block";
+    } else {
+        alert("Oops! Something went wrong. Please try again.");
+    }
+});
+</script>
 
 </body>
 </html>
