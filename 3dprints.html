@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>3D Prints — Michael Butler</title>
+
+<style>
+  :root{
+    --bg: #0d1117;
+    --panel: #161b22;
+    --border: #30363d;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --text: #e6edf3;
+  }
+  html,body{
+    height:100%;
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  nav{
+    background:var(--panel);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  nav ul{
+    list-style:none;
+    margin:0;
+    padding:10px 20px;
+    display:flex;
+    justify-content:center;
+    gap:22px;
+  }
+  nav a{
+    color:var(--text);
+    text-decoration:none;
+    opacity:0.88;
+    font-size:15px;
+  }
+  nav a:hover{ opacity:1; text-decoration:underline; }
+
+  header{
+    text-align:center;
+    padding:36px 18px;
+    background:var(--panel);
+    border-bottom:1px solid var(--border);
+  }
+  header h1{ margin:0; font-size:26px; }
+  header p{ margin:6px 0 0 0; color:var(--muted); font-size:14px; }
+
+  main{ max-width:820px; margin:36px auto; padding:0 18px; }
+
+  .prints-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:24px;
+  }
+
+  .print-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+    transition: transform 0.2s;
+  }
+  .print-card:hover{
+    transform: scale(1.03);
+  }
+  .print-card img{
+    width:100%;
+    display:block;
+  }
+  .print-card-content{
+    padding:16px;
+  }
+  .print-card-content h3{
+    margin:0 0 8px 0;
+    font-size:18px;
+  }
+  .print-card-content p{
+    margin:0;
+    font-size:15px;
+    color:var(--muted);
+  }
+
+  footer{ text-align:center; padding:28px 8px; color:var(--muted); font-size:14px; margin-top:30px; }
+
+  @media (max-width:520px){
+    nav ul{ gap:12px; padding:10px; }
+    header{ padding:28px 14px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="3dprints.html" aria-current="page">3D Prints</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>My 3D Prints</h1>
+    <p>A showcase of some of my favorite 3D printing projects</p>
+  </header>
+
+  <main>
+    <div class="prints-grid">
+      <!-- Example print card -->
+      <div class="print-card">
+        <img src="images/print1.jpg" alt="3D Print 1">
+        <div class="print-card-content">
+          <h3>Print Title 1</h3>
+          <p>Short description of this print, material, or process used.</p>
+        </div>
+      </div>
+
+      <div class="print-card">
+        <img src="images/print2.jpg" alt="3D Print 2">
+        <div class="print-card-content">
+          <h3>Print Title 2</h3>
+          <p>Short description of this print, material, or process used.</p>
+        </div>
+      </div>
+
+      <!-- Add more prints by copying the print-card div -->
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Michael Butler — Portfolio
+  </footer>
+
+</body>
+</html>
