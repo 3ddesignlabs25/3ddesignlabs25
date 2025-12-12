@@ -188,7 +188,8 @@ calcBtn.addEventListener('click', ()=>{
         finalQuoteInput.value=cost;
     } else if(serviceEl.value!==''){
         const base = parseFloat(document.getElementById('basePrice').value)||50;
-        const addon = parseFloat(document.getElementById('addon').value) || 5; // default $5 if empty
+        const addonUnits = parseFloat(document.getElementById('addon').value)||0;
+        const addon = addonUnits * 5; // 
         const difficulty = parseFloat(document.getElementById('difficulty').value)||1;
         const rush = parseFloat(document.getElementById('rush').value)||1;
         const cost = ((base*difficulty + addon)*rush).toFixed(2);
