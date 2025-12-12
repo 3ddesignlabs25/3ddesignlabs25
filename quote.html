@@ -42,7 +42,7 @@ section { padding:50px 20px; max-width:900px; margin:auto; }
 
 <header>
 <h1>Get a Quote</h1>
-<p>Fast, accurate estimates — fully customized to your project.</p>
+<p>Quick, personalized estimates to kickstart your project.</p>
 </header>
 
 <section>
@@ -111,7 +111,7 @@ section { padding:50px 20px; max-width:900px; margin:auto; }
 </select>
 
 <label for="addon">Optional Add-on Cost ($)</label>
-<input type="number" id="addon" name="addon" placeholder="Extra parts / flat fee">
+<input type="number" id="addon" name="addon" value="5" placeholder="Extra parts / flat fee">
 
 <label for="difficulty">Difficulty</label>
 <select id="difficulty" name="difficulty">
@@ -188,7 +188,7 @@ calcBtn.addEventListener('click', ()=>{
         finalQuoteInput.value=cost;
     } else if(serviceEl.value!==''){
         const base = parseFloat(document.getElementById('basePrice').value)||50;
-        const addon = parseFloat(document.getElementById('addon').value)||0;
+        const addon = parseFloat(document.getElementById('addon').value) || 5; // default $5 if empty
         const difficulty = parseFloat(document.getElementById('difficulty').value)||1;
         const rush = parseFloat(document.getElementById('rush').value)||1;
         const cost = ((base*difficulty + addon)*rush).toFixed(2);
