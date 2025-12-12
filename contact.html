@@ -5,6 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Michael Butler</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+/* Contact Page Specific Styling */
+.contact-info {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #161b22;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+}
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+.contact-info a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #161b22;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+}
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #30363d;
+    background: #0d1117;
+    color: #e6edf3;
+    resize: vertical;
+}
+.contact-form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background: #30363d;
+    color: #e6edf3;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.contact-form button:hover {
+    background: #50595f;
+}
+</style>
 </head>
 <body>
 
@@ -27,7 +86,7 @@
 <section>
 
     <!-- Contact Info -->
-    <div class="project">
+    <div class="contact-info">
         <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
         <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
     </div>
@@ -36,15 +95,15 @@
     <div class="contact-form">
         <form action="https://formspree.io/f/xwpgwdnk" method="POST">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
 
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email" placeholder="you@example.com" required>
 
             <label for="message">Message</label>
-            <textarea name="message" id="message" rows="6" required></textarea>
+            <textarea name="message" id="message" rows="6" placeholder="Your message..." required></textarea>
 
-            <button type="submit">Send</button>
+            <button type="submit">Send Message</button>
         </form>
     </div>
 
