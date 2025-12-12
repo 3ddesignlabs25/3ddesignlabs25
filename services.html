@@ -10,22 +10,38 @@
 .project {
     cursor: pointer;
     transition: transform 0.2s, background 0.2s;
+    position: relative;
     padding: 20px;
-    margin: 20px 0;
+    margin-bottom: 20px;
     border-radius: 10px;
     background: #161b22;
     border: 1px solid #30363d;
 }
 .project:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
     background: #1d222b;
 }
-.project h3 {
-    margin-top: 0;
+
+/* Hover hint text */
+.project::after {
+    content: "Click to Get a Quote";
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.9rem;
+    color: #58a6ff;
+    opacity: 0;
+    transition: opacity 0.2s;
 }
-.project p {
-    opacity: 0.85;
-    line-height: 1.5;
+
+.project:hover::after {
+    opacity: 1;
+}
+
+/* Optional: slightly enlarge heading on hover */
+.project:hover h3 {
+    transform: scale(1.03);
+    transition: transform 0.2s;
 }
 </style>
 </head>
@@ -40,13 +56,13 @@
         <li><a href="projects.html">Projects</a></li>
         <li><a href="3dprints.html">3D Prints</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="quote.html">Get a Quote</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <a href="quote.html">Get a Quote</a>
     </ul>
 </nav>
 
 <header>
     <h1>Services</h1>
-    <p>Explore the types of projects I can help you with — from custom electronics to rapid prototyping and automation. Click a service to start your project quote.</p>
 </header>
 
 <section>
@@ -54,22 +70,22 @@
     <!-- Service Cards linking to quote page -->
     <div class="project" onclick="window.location.href='quote.html';">
         <h3>Custom Embedded Systems</h3>
-        <p>Full design and development of microcontroller-based devices using ESP32, Arduino, and Raspberry Pi. I handle everything from circuit design and firmware to testing, ensuring your custom electronics work exactly as you envision.</p>
+        <p>Design and development of microcontroller-based devices with ESP32, Arduino, and Raspberry Pi. From single-board prototypes to fully integrated IoT solutions, I handle coding, wiring, and assembly with precision and efficiency.</p>
     </div>
 
     <div class="project" onclick="window.location.href='quote.html';">
         <h3>3D Printing & CAD</h3>
-        <p>Rapid prototyping with PETG, PLA, and other materials. I design functional enclosures, mounts, and parts using FreeCAD and create optimized 3D prints that combine precision and durability for your projects or products.</p>
+        <p>Rapid prototyping using PETG, TPU, and FreeCAD. I create enclosures, mounts, functional parts, and detailed mechanical models. Your idea gets translated into a high-quality 3D printable design with an estimate for material and print time.</p>
     </div>
 
     <div class="project" onclick="window.location.href='quote.html';">
         <h3>Automation & Networking</h3>
-        <p>Development of local network automation, IoT integration, and microcontroller-based control systems. From device-to-device communication with WireGuard to custom automation scripts, I make your systems smarter and easier to manage.</p>
+        <p>Local network automation, WireGuard device-to-device tunnels, IoT integration, and microcontroller control systems. I implement smart solutions for home, office, or custom project setups, including sensors, relays, and remote monitoring.</p>
     </div>
 
     <div class="project" onclick="window.location.href='quote.html';">
         <h3>Technical Support & Consulting</h3>
-        <p>Guidance for electronics troubleshooting, firmware issues, prototyping workflows, and project management. I provide detailed advice and hands-on support to ensure your project runs smoothly from concept to completion.</p>
+        <p>Assistance with electronics, firmware troubleshooting, prototyping guidance, and project workflow advice. I help you troubleshoot, optimize, and scale your hardware or embedded projects with clear, actionable guidance.</p>
     </div>
 
 </section>
