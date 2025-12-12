@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3D Prints — Michael Butler</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+/* Gallery grid for images */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+    transition: transform 0.2s;
+}
+.gallery img:hover {
+    transform: scale(1.03);
+}
+</style>
 </head>
 <body>
 
-  <nav>
+<!-- NAVIGATION -->
+<nav>
     <ul>
-      <li><a href="index.html">about</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="3dprints.html">3D Prints</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="3dprints.html">3D Prints</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
     </ul>
-  </nav>
+</nav>
 
-  <header>
-    <h1>My 3D Prints</h1>
-    <p>A showcase of some of my favorite 3D printing projects</p>
-  </header>
+<header>
+    <h1>3D Prints</h1>
+</header>
 
-  <main>
-    <div class="prints-grid">
-      <!-- Example print card -->
-      <div class="print-card">
-        <img src="images/print1.jpg" alt="3D Print 1">
-        <div class="print-card-content">
-          <h3>Print Title 1</h3>
-          <p>Short description of this print, material, or process used.</p>
-        </div>
-      </div>
-
-      <div class="print-card">
-        <img src="images/print2.jpg" alt="3D Print 2">
-        <div class="print-card-content">
-          <h3>Print Title 2</h3>
-          <p>Short description of this print, material, or process used.</p>
-        </div>
-      </div>
-
-      <!-- Add more prints by copying the print-card div -->
+<section>
+    <div class="gallery">
+        <img src="https://via.placeholder.com/400x300?text=Print+1" alt="3D Print 1">
+        <img src="https://via.placeholder.com/400x300?text=Print+2" alt="3D Print 2">
+        <img src="https://via.placeholder.com/400x300?text=Print+3" alt="3D Print 3">
+        <img src="https://via.placeholder.com/400x300?text=Print+4" alt="3D Print 4">
     </div>
-  </main>
+</section>
 
-  <footer>
+<footer>
     © 2025 Michael Butler — Portfolio
+</footer>
+
+</body>
+</html>
+er — Portfolio
   </footer>
 
 </body>
