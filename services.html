@@ -1,196 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Services — Michael Butler</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services — 3D Design Labs</title>
 
-<style>
-  :root{
-    --bg: #0d1117;
-    --panel: #161b22;
-    --border: #30363d;
-    --muted: #8b949e;
-    --accent: #58a6ff;
-    --text: #e6edf3;
-  }
-  html,body{
-    height:100%;
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:var(--bg);
-    color:var(--text);
-  }
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+        }
 
-  /* NAV */
-  nav{
-    background:var(--panel);
-    border-bottom:1px solid var(--border);
-    position:sticky;
-    top:0;
-    z-index:20;
-  }
-  nav ul{
-    list-style:none;
-    margin:0;
-    padding:10px 20px;
-    display:flex;
-    justify-content:center;
-    gap:22px;
-  }
-  nav a{
-    color:var(--text);
-    text-decoration:none;
-    opacity:0.88;
-    font-size:15px;
-  }
-  nav a:hover{ opacity:1; text-decoration:underline; }
+        header {
+            background: #161b22;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #30363d;
+        }
 
-  /* HEADER */
-  header{
-    text-align:center;
-    padding:36px 18px;
-    background:var(--panel);
-    border-bottom:1px solid var(--border);
-  }
-  header h1{ margin:0; font-size:26px; }
-  header p{ margin:6px 0 0 0; color:var(--muted); font-size:14px; }
+        nav a {
+            color: #e6edf3;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-  /* CONTENT */
-  main{
-    max-width:900px;
-    margin:40px auto;
-    padding:0 18px;
-  }
+        nav a:hover {
+            color: #58a6ff;
+        }
 
-  .services-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-    gap:24px;
-  }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
 
-  .service-card{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:24px;
-    transition:0.2s ease;
-  }
-  .service-card:hover{
-    border-color:var(--accent);
-    transform:translateY(-4px);
-  }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #58a6ff;
+        }
 
-  .service-card h3{
-    margin-top:0;
-    font-size:20px;
-    color:var(--accent);
-  }
-  .service-card p{
-    margin:10px 0;
-    line-height:1.5;
-    font-size:15px;
-    color:var(--muted);
-  }
+        .service-card {
+            background: #161b22;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+            margin-bottom: 25px;
+        }
 
-  .pricing{
-    margin-top:8px;
-    font-size:14px;
-    color:var(--text);
-  }
+        .service-card h2 {
+            margin-top: 0;
+            color: #7ee787;
+        }
 
-  .cta{
-    text-align:center;
-    margin-top:40px;
-    font-size:17px;
-  }
-  .cta a{
-    color:var(--accent);
-    text-decoration:none;
-    font-weight:bold;
-  }
-  .cta a:hover{ text-decoration:underline; }
+        .service-card p {
+            margin-bottom: 15px;
+        }
 
-  footer{
-    text-align:center;
-    padding:28px 8px;
-    color:var(--muted);
-    margin-top:50px;
-    font-size:14px;
-  }
-</style>
+        form {
+            margin-top: 40px;
+            background: #161b22;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px 0;
+            border-radius: 5px;
+            border: none;
+            background: #0d1117;
+            color: #e6edf3;
+            border: 1px solid #30363d;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #238636;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2ea043;
+        }
+
+    </style>
 </head>
 
 <body>
 
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="skills.html">Skills</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="3dprints.html">3D Prints</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-
 <header>
-  <h1>My Services</h1>
-  <p>Professional 3D printing, design, and embedded systems work</p>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="prints.html">3D Prints</a>
+        <a href="contactform.html">Contact</a>
+        <a href="services.html">Services</a>
+    </nav>
 </header>
 
-<main>
+<div class="container">
+    <h1>Services</h1>
 
-  <div class="services-grid">
-
-    <!-- 3D PRINTING -->
     <div class="service-card">
-      <h3>Custom 3D Printing</h3>
-      <p>High-quality FDM printing using PETG, PLA+, or specialty filaments. Perfect for prototypes, functional parts, decorative prints, and small-batch production.</p>
-      <p class="pricing"><strong>Starting at:</strong> $5 + material cost</p>
+        <h2>🖨️ 3D Printing</h2>
+        <p>High-quality 3D printing using PETG, PLA, and specialty filaments.  
+        Perfect for prototypes, functional parts, custom designs, and one-off prints.</p>
     </div>
 
-    <!-- 3D DESIGN -->
     <div class="service-card">
-      <h3>3D Modeling & CAD Design</h3>
-      <p>Need a custom part, enclosure, or model? I design clean, accurate models using FreeCAD and Tinkercad, optimized for real-world printing.</p>
-      <p class="pricing"><strong>Starting at:</strong> $15 per model</p>
+        <h2>📐 CAD Modeling</h2>
+        <p>Need a part designed from scratch?  
+        I create clean, precise 3D models in FreeCAD for printing, engineering, or visualization.</p>
     </div>
 
-    <!-- MICROCONTROLLER -->
     <div class="service-card">
-      <h3>Embedded Systems & Microcontrollers</h3>
-      <p>ESP32, Arduino, and Raspberry Pi projects. I can build small automation systems, displays, simple server checkers, GPIO controls, and more.</p>
-      <p class="pricing"><strong>Starting at:</strong> $20 per project</p>
+        <h2>🛠️ Repair & Replication</h2>
+        <p>Broken plastic part? Out-of-production piece?  
+        I can reconstruct and replicate items with custom measurements.</p>
     </div>
 
-    <!-- ELECTRONICS -->
     <div class="service-card">
-      <h3>Electronics & Small Circuits</h3>
-      <p>Custom LED setups, sensors, relays, simple PCB layouts, and other micro-projects. Built clean and tested on a dedicated safe bench.</p>
-      <p class="pricing"><strong>Starting at:</strong> $10 per build</p>
+        <h2>🚀 Small Batch Production</h2>
+        <p>Short-run manufacturing for creators, businesses, and hobbyists.  
+        Get multiple high-quality copies at affordable rates.</p>
     </div>
 
-    <!-- TECH SUPPORT -->
-    <div class="service-card">
-      <h3>Technical Help & Troubleshooting</h3>
-      <p>Help with printers, microcontrollers, wiring, firmware, Raspberry Pi setup, and basic programming issues. Remote or local help available.</p>
-      <p class="pricing"><strong>Starting at:</strong> $10</p>
-    </div>
 
-  </div>
+    <!-- CONTACT FORM FOR SERVICES -->
+    <form action="https://formspree.io/f/xwpgwdnk" method="POST">
+        <h2>Request a Quote</h2>
 
-  <div class="cta">
-    Ready to start a project?  
-    <br><br>
-    <a href="contactform.html">Contact me here</a>
-  </div>
+        <label for="name">Your Name</label>
+        <input type="text" name="name" id="name" required />
 
-</main>
+        <label for="email">Your Email</label>
+        <input type="email" name="email" id="email" required />
 
-<footer>
-  © 2025 Michael Butler — Portfolio
-</footer>
+        <label for="project">Project Description</label>
+        <textarea name="project" id="project" rows="5" required></textarea>
+
+        <button type="submit">Submit Request</button>
+    </form>
+
+</div>
 
 </body>
 </html>
