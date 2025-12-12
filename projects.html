@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Michael Butler</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav ul {
+            margin: 0;
+            padding: 10px 20px;
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            gap: 25px;
+        }
+        nav a {
+            color: #e6edf3;
+            text-decoration: none;
+            font-size: 1rem;
+            opacity: 0.85;
+            transition: opacity .2s;
+        }
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* PROJECT CARDS */
+        section {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h2 {
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .project {
+            background: #161b22;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .project:hover {
+            transform: scale(1.02);
+            background: #1d222b;
+        }
+        .project img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 1px solid #30363d;
+        }
+
+        code {
+            background: #0a0f14;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            border: 1px solid #30363d;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.6;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>Projects</h1>
+</header>
+
+<section>
+
+    <!-- PROJECT 1 -->
+    <div class="project">
+        <h3>Arduino Nano / ESP32 Wi-Fi Alarm</h3>
+        <p>
+            A compact embedded system that auto-connects to Wi-Fi and hosts a web server for alarm control,
+            configuration, and system status. Includes physical buttons and LED indicators for offline operation.
+        </p>
+        <p>
+            The enclosure is a precision-fit PETG 3D-printed shell with custom buttons and LED diffusers.
+        </p>
+
+        <img src="https://via.placeholder.com/1200x700?text=ESP32+Alarm+Device" alt="Arduino Nano ESP32 WiFi alarm">
+
+        <pre><code>
+// WiFi reconnection handling
+unsigned long lastWifiCheck = 0;
+const unsigned long WIFI_CHECK_INTERVAL = 10000;
+unsigned long lastWifiReconnect = 0;
+const unsigned long WIFI_RECONNECT_INTERVAL = 30000;
+int wifiReconnectAttempts = 3;
+const int MAX_RECONNECT_ATTEMPTS = 3;
+
+if (wifiAvailable) {
+    configTime(gmtOffset_sec, daylightOffset_sec, "pool.ntp.org", "time.nist.gov");
+    serialPrint("Syncing time from internet...");
+
+    int timeAttempts = 0;
+    while (time(nullptr) < 100000 && timeAttempts < 20) {
+        delay(500);
+        Serial.print(".");
+        timeAttempts++;
+    }
+
+    if (time(nullptr) > 100000) {
+        serialPrint("Time synced!");
+        setupWebServer();
+    } else {
+        serialPrint("Time sync failed.");
+    }
+} else {
+    serialPrint("WiFi connection failed. Retrying...");
+}
+        </code></pre>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project">
+        <h3>Custom 3D-Printed Tool & Vape Holder</h3>
+        <p>
+            A FreeCAD-designed multi-slot organizer used to hold a vape, juice bottle, batteries,
+            and small tools. Printed in PETG on an Ender 3 Neo with tuned tolerances.
+        </p>
+
+        <img src="https://via.placeholder.com/1200x700?text=3D+Vape+Holder" alt="3D Printed Vape Holder">
+    </div>
+
+</section>
+
+<footer>
+    © 2025 Michael Butler — Portfolio
+</footer>
+
+</body>
+</html>
