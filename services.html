@@ -6,8 +6,14 @@
 <title>Services — Michael Butler</title>
 <link rel="stylesheet" href="styles.css">
 <style>
+/* Make service cards look like buttons */
 .project {
     cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+.project:hover {
+    transform: scale(1.02);
+    background: #1d222b;
 }
 </style>
 </head>
@@ -31,41 +37,25 @@
 
 <section>
 
-    <!-- Service Cards -->
-    <div class="project" onclick="document.getElementById('serviceForm').scrollIntoView({behavior:'smooth'})">
+    <!-- Service Cards linking to contact page -->
+    <div class="project" onclick="window.location.href='contact.html';">
         <h3>Custom Embedded Systems</h3>
         <p>Design and development of microcontroller-based devices with ESP32, Arduino, and Raspberry Pi.</p>
     </div>
 
-    <div class="project" onclick="document.getElementById('serviceForm').scrollIntoView({behavior:'smooth'})">
+    <div class="project" onclick="window.location.href='contact.html';">
         <h3>3D Printing & CAD</h3>
         <p>Rapid prototyping using PETG and FreeCAD, designing enclosures, mounts, and functional parts.</p>
     </div>
 
-    <div class="project" onclick="document.getElementById('serviceForm').scrollIntoView({behavior:'smooth'})">
+    <div class="project" onclick="window.location.href='contact.html';">
         <h3>Automation & Networking</h3>
         <p>Local network automation, WireGuard device-to-device tunnels, IoT integration, and microcontroller control systems.</p>
     </div>
 
-    <div class="project" onclick="document.getElementById('serviceForm').scrollIntoView({behavior:'smooth'})">
+    <div class="project" onclick="window.location.href='contact.html';">
         <h3>Technical Support & Consulting</h3>
         <p>Assistance with electronics, firmware troubleshooting, prototyping guidance, and project workflow advice.</p>
-    </div>
-
-    <!-- Form at the bottom -->
-    <div class="contact-form" id="serviceForm">
-        <form action="https://formspree.io/f/xwpgwdnk" method="POST">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
-
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
-
-            <label for="message">Message</label>
-            <textarea name="message" id="message" rows="6" required></textarea>
-
-            <button type="submit">Send</button>
-        </form>
     </div>
 
 </section>
@@ -76,7 +66,3 @@
 
 </body>
 </html>
-
-    <!-- Service Cards -->
-    <div class="project" onclick="do
-
