@@ -32,5 +32,51 @@
 <section>
 
     <!-- Service Cards -->
+    <div class="project" onclick="document.getElementById('serviceForm').scrollIntoView({behavior:'smooth'})">
+        <h3>Custom Embedded Systems</h3>
+        <p>Design and development of microcontroller-based devices with ESP32, Arduino, and Raspberry Pi.</p>
+    </div>
+
+    <div class="project" onclick="document.getElementById('serviceForm').scrollIntoView({behavior:'smooth'})">
+        <h3>3D Printing & CAD</h3>
+        <p>Rapid prototyping using PETG and FreeCAD, designing enclosures, mounts, and functional parts.</p>
+    </div>
+
+    <div class="project" onclick="document.getElementById('serviceForm').scrollIntoView({behavior:'smooth'})">
+        <h3>Automation & Networking</h3>
+        <p>Local network automation, WireGuard device-to-device tunnels, IoT integration, and microcontroller control systems.</p>
+    </div>
+
+    <div class="project" onclick="document.getElementById('serviceForm').scrollIntoView({behavior:'smooth'})">
+        <h3>Technical Support & Consulting</h3>
+        <p>Assistance with electronics, firmware troubleshooting, prototyping guidance, and project workflow advice.</p>
+    </div>
+
+    <!-- Form at the bottom -->
+    <div class="contact-form" id="serviceForm">
+        <form action="https://formspree.io/f/xwpgwdnk" method="POST">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="message">Message</label>
+            <textarea name="message" id="message" rows="6" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    © 2025 Michael Butler — Portfolio
+</footer>
+
+</body>
+</html>
+
+    <!-- Service Cards -->
     <div class="project" onclick="do
 
