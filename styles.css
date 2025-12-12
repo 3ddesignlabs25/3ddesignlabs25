@@ -1,6 +1,4 @@
-/* ===========================
-   GLOBAL
-=========================== */
+/* ========== GLOBAL STYLES ========== */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -9,9 +7,18 @@ body {
     line-height: 1.6;
 }
 
-/* ===========================
-   NAVIGATION
-=========================== */
+/* Links */
+a {
+    color: #58a6ff;
+    text-decoration: none;
+    transition: color 0.2s, opacity 0.2s;
+}
+a:hover {
+    color: #1f6feb;
+    opacity: 1;
+}
+
+/* ========== NAVIGATION ========== */
 nav {
     background: #161b22;
     border-bottom: 1px solid #30363d;
@@ -31,7 +38,6 @@ nav ul {
 
 nav a {
     color: #e6edf3;
-    text-decoration: none;
     font-size: 1rem;
     opacity: 0.85;
     transition: opacity 0.2s;
@@ -41,9 +47,7 @@ nav a:hover {
     opacity: 1;
 }
 
-/* ===========================
-   HEADERS
-=========================== */
+/* ========== HEADER ========== */
 header {
     text-align: center;
     padding: 50px 20px;
@@ -56,16 +60,19 @@ header h1 {
     margin-bottom: 10px;
 }
 
-/* ===========================
-   CONTENT SECTIONS
-=========================== */
+header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* ========== SECTION / CONTENT ========== */
 section {
     padding: 50px 20px;
     max-width: 900px;
     margin: auto;
 }
 
-h2 {
+h2, h3 {
     border-bottom: 2px solid #30363d;
     padding-bottom: 5px;
     margin-bottom: 20px;
@@ -76,9 +83,7 @@ ul {
     margin-bottom: 30px;
 }
 
-/* ===========================
-   PROJECT CARDS
-=========================== */
+/* ========== PROJECT / SERVICE CARDS ========== */
 .project {
     background: #161b22;
     padding: 20px;
@@ -86,6 +91,7 @@ ul {
     border-radius: 10px;
     border: 1px solid #30363d;
     transition: transform 0.2s, background 0.2s;
+    cursor: pointer;
 }
 
 .project:hover {
@@ -100,10 +106,8 @@ ul {
     border: 1px solid #30363d;
 }
 
-/* ===========================
-   CODE BLOCKS
-=========================== */
-code {
+/* ========== CODE BLOCKS ========== */
+code, pre {
     background: #0a0f14;
     padding: 10px;
     display: block;
@@ -113,12 +117,106 @@ code {
     font-size: 0.9rem;
 }
 
-/* ===========================
-   FOOTER
-=========================== */
+/* ========== CONTACT PAGE ========== */
+.contact-info, .contact-form {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #161b22;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #30363d;
+    background: #0d1117;
+    color: #e6edf3;
+    resize: vertical;
+}
+
+.contact-form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background: #30363d;
+    color: #e6edf3;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.contact-form button:hover {
+    background: #50595f;
+}
+
+/* ========== LANDING PAGE BUTTONS ========== */
+.landing-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.landing-buttons a {
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    background: #161b22;
+    color: #e6edf3;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+    border: 1px solid #30363d;
+}
+
+.landing-buttons a:hover {
+    background: #1d222b;
+    transform: scale(1.05);
+}
+
+/* ========== FOOTER ========== */
 footer {
     text-align: center;
     padding: 20px;
     opacity: 0.6;
     margin-top: 50px;
+}
+
+/* ========== RESPONSIVE STYLING ========== */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    nav a {
+        font-size: 1.1rem;
+        text-align: center;
+        display: block;
+    }
+    .landing-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-buttons a {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
 }
