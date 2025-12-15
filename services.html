@@ -4,51 +4,187 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services — Michael Butler</title>
-<link rel="stylesheet" href="styles.css">
 <style>
-/* Make service cards look like buttons */
-.project {
-    cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
-    position: relative;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0 0 10px 0;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin: 0;
+    max-width: 700px;
+    margin: 10px auto 0 auto;
+}
+
+section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.intro {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+}
+
+.intro p {
+    font-size: 1.1rem;
+    color: #8b949e;
+    line-height: 1.8;
+}
+
+/* Service Cards */
+.service-card {
     background: #161b22;
     border: 1px solid #30363d;
-}
-.project:hover {
-    transform: scale(1.03);
-    background: #1d222b;
+    border-radius: 12px;
+    padding: 35px;
+    margin-bottom: 35px;
+    transition: all 0.3s ease;
 }
 
-/* Hover hint text */
-.project::after {
-    content: "Click to Get a Quote";
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-size: 0.9rem;
+.service-card:hover {
+    border-color: #58a6ff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(88, 166, 255, 0.15);
+}
+
+.service-card h2 {
+    font-size: 1.8rem;
     color: #58a6ff;
-    opacity: 0;
-    transition: opacity 0.2s;
+    margin: 0 0 15px 0;
 }
 
-.project:hover::after {
-    opacity: 1;
+.service-overview {
+    color: #c9d1d9;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 25px 0;
 }
 
-/* Optional: slightly enlarge heading on hover */
-.project:hover h3 {
-    transform: scale(1.03);
-    transition: transform 0.2s;
+.service-section {
+    margin: 20px 0;
+}
+
+.service-section h3 {
+    font-size: 1.15rem;
+    color: #e6edf3;
+    margin: 0 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #30363d;
+}
+
+.service-section ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #8b949e;
+}
+
+.service-section ul li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.service-section p {
+    color: #8b949e;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* CTA Button */
+.service-cta {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #30363d;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #238636;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #238636;
+}
+
+.btn:hover {
+    background: #2ea043;
+    border-color: #2ea043;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(35, 134, 54, 0.4);
+}
+
+/* Bottom CTA Section */
+.bottom-cta {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.bottom-cta h2 {
+    font-size: 2rem;
+    color: #e6edf3;
+    margin: 0 0 15px 0;
+}
+
+.bottom-cta p {
+    font-size: 1.1rem;
+    color: #8b949e;
+    margin: 0 0 25px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #161b22;
+    border-top: 1px solid #30363d;
+    margin-top: 50px;
+    color: #8b949e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .service-card {
+        padding: 25px;
+    }
+
+    .service-card h2 {
+        font-size: 1.5rem;
+    }
 }
 </style>
 </head>
 <body>
 
 <!-- NAVIGATION -->
-<!-- START: Reusable Navigation Block -->
 <style>
 .site-nav {
   background: #161b22;
@@ -256,39 +392,211 @@
   }
 })();
 </script>
-<!-- END: Reusable Navigation Block -->
 
 <header>
     <h1>Services</h1>
+    <p>Custom embedded systems, electronics, and fabrication work</p>
 </header>
 
 <section>
 
-    <!-- Service Cards linking to quote page -->
-    <div class="project" onclick="window.location.href='quote.html';">
-        <h3>Custom Embedded Systems</h3>
-        <p>Design and development of microcontroller-based devices with ESP32, Arduino, and Raspberry Pi. From single-board prototypes to fully integrated IoT solutions, I handle coding, wiring, and assembly with precision and efficiency.</p>
+    <div class="intro">
+        <p>I offer technical services across embedded systems development, electronics prototyping, 3D printing, and automation. Each project is approached systematically—validating requirements, prototyping core functionality, and delivering working solutions that meet real-world operating conditions.</p>
     </div>
 
-    <div class="project" onclick="window.location.href='quote.html';">
-        <h3>3D Printing & CAD</h3>
-        <p>Rapid prototyping using PETG, TPU, and FreeCAD. I create enclosures, mounts, functional parts, and detailed mechanical models. Your idea gets translated into a high-quality 3D printable design with an estimate for material and print time.</p>
+    <!-- SERVICE 1: Embedded Systems Build -->
+    <div class="service-card">
+        <h2>Embedded Systems Build</h2>
+        <p class="service-overview">Complete development of microcontroller-based devices from concept to working prototype. This includes circuit design, firmware development, component integration, and assembly of functional embedded systems using ESP32, Arduino, or Raspberry Pi platforms.</p>
+
+        <div class="service-section">
+            <h3>Typical Projects</h3>
+            <ul>
+                <li>IoT devices with Wi-Fi or Bluetooth connectivity</li>
+                <li>Sensor monitoring systems with data logging</li>
+                <li>Automation controllers for motors, relays, and actuators</li>
+                <li>Custom alarm or notification systems</li>
+                <li>Environmental monitoring stations</li>
+            </ul>
+        </div>
+
+        <div class="service-section">
+            <h3>Scope & Considerations</h3>
+            <p>Project complexity is determined by the number of microcontrollers, wireless communication requirements (WiFi, BLE), integration of displays or user interfaces, and power system design (USB, battery, or hybrid). Additional factors include sensor complexity, real-time processing requirements, and whether the system needs remote access or web-based control interfaces.</p>
+        </div>
+
+        <div class="service-cta">
+            <a href="quote.html" class="btn">Get a Quote</a>
+        </div>
     </div>
 
-    <div class="project" onclick="window.location.href='quote.html';">
-        <h3>Automation & Networking</h3>
-        <p>Local network automation, WireGuard device-to-device tunnels, IoT integration, and microcontroller control systems. I implement smart solutions for home, office, or custom project setups, including sensors, relays, and remote monitoring.</p>
+    <!-- SERVICE 2: Coding / Firmware Development -->
+    <div class="service-card">
+        <h2>Coding / Firmware Development</h2>
+        <p class="service-overview">Custom firmware and software development for embedded systems and automation tasks. This includes writing optimized C/C++ code for microcontrollers, Python scripts for automation, and web-based interfaces for device control and monitoring.</p>
+
+        <div class="service-section">
+            <h3>Typical Projects</h3>
+            <ul>
+                <li>Device firmware for ESP32, Arduino, or Raspberry Pi</li>
+                <li>Automation scripts for repetitive tasks or workflows</li>
+                <li>Web dashboards for real-time device monitoring</li>
+                <li>Sensor data processing and analytics</li>
+                <li>Custom control logic for hardware integration</li>
+            </ul>
+        </div>
+
+        <div class="service-section">
+            <h3>Scope & Considerations</h3>
+            <p>Scope depends on project type (simple automation script vs. multi-page web application), functionality requirements (basic logic vs. complex state management with API integration), and target platform (microcontroller firmware vs. browser-based applications). Projects involving device communication, data storage, or user input validation require additional development time.</p>
+        </div>
+
+        <div class="service-cta">
+            <a href="quote.html" class="btn">Get a Quote</a>
+        </div>
     </div>
 
-    <div class="project" onclick="window.location.href='quote.html';">
-        <h3>Technical Support & Consulting</h3>
-        <p>Assistance with electronics, firmware troubleshooting, prototyping guidance, and project workflow advice. I help you troubleshoot, optimize, and scale your hardware or embedded projects with clear, actionable guidance.</p>
+    <!-- SERVICE 3: Electronics Assembly / Wiring -->
+    <div class="service-card">
+        <h2>Electronics Assembly / Wiring</h2>
+        <p class="service-overview">Circuit assembly, soldering, and wiring for electronics projects. This includes building circuits from schematics, component soldering (through-hole and SMD), breadboard-to-PCB transitions, and enclosure wiring with proper cable management.</p>
+
+        <div class="service-section">
+            <h3>Typical Projects</h3>
+            <ul>
+                <li>Prototype circuit assembly from breadboard designs</li>
+                <li>PCB population and component soldering</li>
+                <li>Device repair and component replacement</li>
+                <li>Custom cable assemblies and wire harnesses</li>
+                <li>Enclosure wiring with strain relief and routing</li>
+            </ul>
+        </div>
+
+        <div class="service-section">
+            <h3>Scope & Considerations</h3>
+            <p>Complexity is influenced by component count, assembly type (through-hole vs. surface-mount), and whether enclosure integration is required. Projects with many small components, mixed assembly types, or custom enclosure wiring require more time and precision work.</p>
+        </div>
+
+        <div class="service-cta">
+            <a href="quote.html" class="btn">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- SERVICE 4: Product Repair -->
+    <div class="service-card">
+        <h2>Product Repair</h2>
+        <p class="service-overview">Diagnosis and repair of electronic devices and embedded systems. This includes troubleshooting hardware failures, component replacement, firmware issues, and restoring functionality to damaged or non-working devices.</p>
+
+        <div class="service-section">
+            <h3>Typical Projects</h3>
+            <ul>
+                <li>Consumer electronics repair (controllers, displays, power supplies)</li>
+                <li>Embedded device troubleshooting and component replacement</li>
+                <li>Industrial equipment diagnosis and repair</li>
+                <li>Circuit board trace repair and component reflow</li>
+                <li>Firmware recovery and re-flashing</li>
+            </ul>
+        </div>
+
+        <div class="service-section">
+            <h3>Scope & Considerations</h3>
+            <p>Repair scope depends on device type (consumer vs. industrial), issue complexity (electrical vs. mechanical vs. combined), and whether diagnostic work is needed to identify the failure. Some repairs may require sourcing replacement components or custom fabrication of unavailable parts.</p>
+        </div>
+
+        <div class="service-cta">
+            <a href="quote.html" class="btn">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- SERVICE 5: CAD Modeling / Design -->
+    <div class="service-card">
+        <h2>CAD Modeling / Design</h2>
+        <p class="service-overview">Precision CAD modeling for functional parts, enclosures, and mechanical assemblies. Using FreeCAD and Tinkercad, I create designs optimized for 3D printing with proper tolerances, mounting features, and integration points for electronics.</p>
+
+        <div class="service-section">
+            <h3>Typical Projects</h3>
+            <ul>
+                <li>Custom enclosures for electronics projects</li>
+                <li>Mounting brackets and hardware adapters</li>
+                <li>Mechanical assemblies with interlocking parts</li>
+                <li>Replacement parts for damaged or discontinued components</li>
+                <li>Print-ready STL files with optimized geometry</li>
+            </ul>
+        </div>
+
+        <div class="service-section">
+            <h3>Scope & Considerations</h3>
+            <p>Project scope is determined by whether you need a new design or modification of existing files, part complexity (simple flat parts vs. complex mechanical assemblies), and whether print-ready export with support structures is required. Designs that integrate with specific hardware or require precise tolerances need additional iteration.</p>
+        </div>
+
+        <div class="service-cta">
+            <a href="quote.html" class="btn">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- SERVICE 6: 3D Printing -->
+    <div class="service-card">
+        <h2>3D Printing</h2>
+        <p class="service-overview">FDM 3D printing services using PETG, PLA, ABS, and TPU materials. I handle file preparation, print optimization, material selection, and deliver finished parts with quality surface finish and dimensional accuracy.</p>
+
+        <div class="service-section">
+            <h3>Typical Projects</h3>
+            <ul>
+                <li>Functional enclosures and protective cases</li>
+                <li>Mechanical parts and replacement components</li>
+                <li>Mounting hardware and brackets</li>
+                <li>Prototype parts for fit testing</li>
+                <li>Custom organizers and fixtures</li>
+            </ul>
+        </div>
+
+        <div class="service-section">
+            <h3>Scope & Considerations</h3>
+            <p>Cost is calculated based on part dimensions (length, width, height), material choice, and infill requirements. Larger parts, specialized materials like TPU, or high-infill structural components require more material and print time. Print-ready files are preferred, but I can also prepare STL files for optimal printing orientation and support placement.</p>
+        </div>
+
+        <div class="service-cta">
+            <a href="quote.html" class="btn">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- SERVICE 7: Consulting / Tech Support -->
+    <div class="service-card">
+        <h2>Consulting / Tech Support</h2>
+        <p class="service-overview">Technical consultation and troubleshooting assistance for electronics, embedded systems, and fabrication projects. This includes project planning, component selection guidance, debugging support, and workflow optimization advice.</p>
+
+        <div class="service-section">
+            <h3>Typical Projects</h3>
+            <ul>
+                <li>Project feasibility assessment and planning</li>
+                <li>Component selection and sourcing guidance</li>
+                <li>Firmware debugging and optimization</li>
+                <li>Circuit design review and troubleshooting</li>
+                <li>3D printing settings and material selection</li>
+            </ul>
+        </div>
+
+        <div class="service-section">
+            <h3>Scope & Considerations</h3>
+            <p>Sessions are offered in time blocks (30 minutes to 4 hours) depending on project complexity. Remote consultation is available for most technical questions, while in-person sessions are offered for hands-on troubleshooting, component inspection, or detailed project review.</p>
+        </div>
+
+        <div class="service-cta">
+            <a href="quote.html" class="btn">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="bottom-cta">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Get a personalized quote based on your specific requirements</p>
+        <a href="quote.html" class="btn">Get a Quote</a>
     </div>
 
 </section>
 
 <footer>
-    © 2025 Michael Butler — Portfolio
+    © 2025 Michael Butler — Embedded Systems & 3D Fabrication
 </footer>
 
 </body>
