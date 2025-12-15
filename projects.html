@@ -4,7 +4,304 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects — Michael Butler</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Google Model Viewer for 3D models -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Project card (collapsed state) */
+        .project-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-color: #58a6ff;
+        }
+
+        .project-card.active {
+            border-color: #58a6ff;
+            box-shadow: 0 4px 20px rgba(88, 166, 255, 0.2);
+        }
+
+        .project-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+            color: #58a6ff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-card .expand-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .project-card p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+
+        /* Expanded project content */
+        .project-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .project-content.active {
+            max-height: 5000px;
+            margin-top: 25px;
+        }
+
+        /* Tab navigation */
+        .project-tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid #30363d;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .project-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            color: #e6edf3;
+            opacity: 0.7;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .project-tab:hover {
+            opacity: 1;
+            background: #0d1117;
+        }
+
+        .project-tab.active {
+            opacity: 1;
+            color: #58a6ff;
+            border-bottom-color: #58a6ff;
+        }
+
+        /* Tab content panels */
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Instagram section */
+        .instagram-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .instagram-item {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .instagram-item h4 {
+            margin: 0 0 15px 0;
+            color: #58a6ff;
+            font-size: 1.2rem;
+        }
+
+        .instagram-embed-container {
+            max-width: 540px;
+            margin: 0 auto;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .instagram-fallback {
+            text-align: center;
+            padding: 40px;
+            background: #0d1117;
+            border: 2px dashed #30363d;
+            border-radius: 8px;
+        }
+
+        .instagram-fallback a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .instagram-fallback a:hover {
+            text-decoration: underline;
+        }
+
+        /* Code section */
+        .code-section {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .code-section h4 {
+            margin: 0 0 15px 0;
+            color: #58a6ff;
+        }
+
+        pre {
+            background: #010409;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 0;
+        }
+
+        code {
+            color: #e6edf3;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #238636;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .github-link:hover {
+            background: #2ea043;
+        }
+
+        /* 3D Model section */
+        .model-viewer-container {
+            width: 100%;
+            height: 600px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            background-color: #0d1117;
+        }
+
+        .model-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 600px;
+            background: #0d1117;
+            border: 2px dashed #30363d;
+            border-radius: 8px;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .model-fallback p {
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #161b22;
+            border-top: 1px solid #30363d;
+            margin-top: 50px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+
+            .project-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .project-tabs {
+                gap: 5px;
+            }
+
+            .project-tab {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .model-viewer-container,
+            .model-fallback {
+                height: 400px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -225,21 +522,74 @@
 
 <section>
 
-    <!-- PROJECT 1 -->
-    <div class="project">
-        <h3>Arduino Nano / ESP32 Wi-Fi Alarm</h3>
-        <p>
-            A compact embedded system that auto-connects to Wi-Fi and hosts a web server for alarm control,
-            configuration, and system status. Includes physical buttons and LED indicators for offline operation.
-        </p>
-        <p>
-            The enclosure is a precision-fit PETG 3D-printed shell with custom buttons and LED diffusers.
-        </p>
+    <!-- ========== PROJECT 1: Arduino Nano / ESP32 Wi-Fi Alarm ========== -->
+    <div class="project-card" onclick="toggleProject('project1')">
+        <h3>
+            Arduino Nano / ESP32 Wi-Fi Alarm
+            <span class="expand-icon">▼</span>
+        </h3>
+        <p>A compact embedded system with web server control, physical buttons, and 3D-printed enclosure.</p>
+    </div>
 
-        <img src="https://via.placeholder.com/1200x700?text=ESP32+Alarm+Device" alt="Arduino Nano ESP32 WiFi alarm">
+    <div class="project-content" id="project1">
+        <!-- Tab Navigation -->
+        <div class="project-tabs">
+            <button class="project-tab active" onclick="showTab('project1', 'instagram')">Project</button>
+            <button class="project-tab" onclick="showTab('project1', 'code')">Code</button>
+            <button class="project-tab" onclick="showTab('project1', 'model')">3D Model</button>
+        </div>
 
-        <pre><code>
-// WiFi reconnection handling
+        <!-- INSTAGRAM TAB -->
+        <div class="tab-panel active" id="project1-instagram">
+            <div class="instagram-list">
+                
+                <!-- Instagram Post 1 -->
+                <!-- TO ADD MORE INSTAGRAM POSTS: Copy this entire .instagram-item block -->
+                <div class="instagram-item">
+                    <h4>Part 1: Initial Build</h4>
+                    <div class="instagram-embed-container">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DSLVeRAktD6/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                            <div style="padding:16px;">
+                                <a href="https://www.instagram.com/p/DSLVeRAktD6/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                                    <div style="padding-top: 8px;">
+                                        <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Instagram Post 2 -->
+                <!-- TO ADD: Replace YOUR_POST_ID with actual Instagram post ID -->
+                <div class="instagram-item">
+                    <h4>Part 2: Enclosure Design</h4>
+                    <div class="instagram-fallback">
+                        <p>📷 <a href="https://www.instagram.com/p/YOUR_POST_ID/" target="_blank" rel="noopener">View Part 2 on Instagram</a></p>
+                        <p style="font-size:0.9rem; opacity:0.7; margin-top:10px;">Replace YOUR_POST_ID with your actual post ID</p>
+                    </div>
+                </div>
+
+                <!-- Instagram Post 3 -->
+                <!-- TO ADD: Replace YOUR_POST_ID with actual Instagram post ID -->
+                <div class="instagram-item">
+                    <h4>Part 3: Final Assembly</h4>
+                    <div class="instagram-fallback">
+                        <p>📷 <a href="https://www.instagram.com/p/YOUR_POST_ID/" target="_blank" rel="noopener">View Part 3 on Instagram</a></p>
+                        <p style="font-size:0.9rem; opacity:0.7; margin-top:10px;">Replace YOUR_POST_ID with your actual post ID</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CODE TAB -->
+        <div class="tab-panel" id="project1-code">
+            
+            <!-- Code Snippet 1 -->
+            <div class="code-section">
+                <h4>WiFi Reconnection Logic</h4>
+                <pre><code>// WiFi reconnection handling
 unsigned long lastWifiCheck = 0;
 const unsigned long WIFI_CHECK_INTERVAL = 10000;
 unsigned long lastWifiReconnect = 0;
@@ -266,19 +616,112 @@ if (wifiAvailable) {
     }
 } else {
     serialPrint("WiFi connection failed. Retrying...");
-}
-        </code></pre>
+}</code></pre>
+            </div>
+
+            <!-- GitHub Link (Optional) -->
+            <!-- TO ADD: Replace # with your actual GitHub repository URL -->
+            <a href="#" class="github-link" target="_blank" rel="noopener">View Full Code on GitHub →</a>
+            
+        </div>
+
+        <!-- 3D MODEL TAB -->
+        <div class="tab-panel" id="project1-model">
+            
+            <!-- 3D Model Viewer -->
+            <!-- TO ADD YOUR MODEL: Replace the 'src' attribute with your .glb or .gltf file path -->
+            <!-- Example: src="models/alarm-enclosure.glb" -->
+            <div class="model-viewer-container">
+                <model-viewer 
+                    src="" 
+                    alt="ESP32 Alarm Enclosure 3D Model" 
+                    auto-rotate 
+                    camera-controls 
+                    shadow-intensity="1"
+                    style="background-color: #0d1117;">
+                </model-viewer>
+            </div>
+
+            <!-- Fallback message if no model is loaded -->
+            <div class="model-fallback" style="display: none;">
+                <div>
+                    <p>🧊 3D Model coming soon</p>
+                    <p style="font-size:0.9rem; opacity:0.6; margin-top:10px;">Add your .glb or .gltf file to the model-viewer src attribute</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <!-- PROJECT 2 -->
-    <div class="project">
-        <h3>Custom 3D-Printed Tool & Vape Holder</h3>
-        <p>
-            A FreeCAD-designed multi-slot organizer used to hold a vape, juice bottle, batteries,
-            and small tools. Printed in PETG on an Ender 3 Neo with tuned tolerances.
-        </p>
+    <!-- ========== PROJECT 2: Custom 3D-Printed Tool & Vape Holder ========== -->
+    <div class="project-card" onclick="toggleProject('project2')">
+        <h3>
+            Custom 3D-Printed Tool & Vape Holder
+            <span class="expand-icon">▼</span>
+        </h3>
+        <p>A FreeCAD-designed multi-slot organizer printed in PETG with tuned tolerances.</p>
+    </div>
 
-        <img src="https://via.placeholder.com/1200x700?text=3D+Vape+Holder" alt="3D Printed Vape Holder">
+    <div class="project-content" id="project2">
+        <!-- Tab Navigation -->
+        <div class="project-tabs">
+            <button class="project-tab active" onclick="showTab('project2', 'instagram')">Project</button>
+            <button class="project-tab" onclick="showTab('project2', 'code')">Code</button>
+            <button class="project-tab" onclick="showTab('project2', 'model')">3D Model</button>
+        </div>
+
+        <!-- INSTAGRAM TAB -->
+        <div class="tab-panel active" id="project2-instagram">
+            <div class="instagram-list">
+                
+                <!-- Instagram Post 1 -->
+                <div class="instagram-item">
+                    <h4>Part 1: Design & Print</h4>
+                    <div class="instagram-fallback">
+                        <p>📷 <a href="https://www.instagram.com/p/YOUR_POST_ID/" target="_blank" rel="noopener">View Part 1 on Instagram</a></p>
+                        <p style="font-size:0.9rem; opacity:0.7; margin-top:10px;">Replace YOUR_POST_ID with your actual post ID</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CODE TAB -->
+        <div class="tab-panel" id="project2-code">
+            <div class="code-section">
+                <h4>FreeCAD Python Script (Optional)</h4>
+                <pre><code># Placeholder for CAD automation scripts
+# Add your FreeCAD Python scripts here
+
+import FreeCAD
+import Part
+
+# Example: Create a simple box
+box = Part.makeBox(100, 100, 50)
+Part.show(box)</code></pre>
+            </div>
+        </div>
+
+        <!-- 3D MODEL TAB -->
+        <div class="tab-panel" id="project2-model">
+            <div class="model-viewer-container">
+                <model-viewer 
+                    src="" 
+                    alt="Vape Holder 3D Model" 
+                    auto-rotate 
+                    camera-controls 
+                    shadow-intensity="1"
+                    style="background-color: #0d1117;">
+                </model-viewer>
+            </div>
+
+            <div class="model-fallback" style="display: none;">
+                <div>
+                    <p>🧊 3D Model coming soon</p>
+                    <p style="font-size:0.9rem; opacity:0.6; margin-top:10px;">Add your .glb or .gltf file to the model-viewer src attribute</p>
+                </div>
+            </div>
+        </div>
     </div>
 
 </section>
@@ -286,6 +729,69 @@ if (wifiAvailable) {
 <footer>
     © 2025 Michael Butler — Portfolio
 </footer>
+
+<!-- Instagram Embed Script -->
+<script async src="//www.instagram.com/embed.js"></script>
+
+<!-- Project Accordion & Tab Logic -->
+<script>
+// Track currently open project
+var currentOpenProject = null;
+
+// Toggle project expansion (accordion)
+function toggleProject(projectId) {
+    var projectCard = event.currentTarget;
+    var projectContent = document.getElementById(projectId);
+    
+    // If clicking the same project, just toggle it
+    if (currentOpenProject === projectId) {
+        projectCard.classList.toggle('active');
+        projectContent.classList.toggle('active');
+        currentOpenProject = projectContent.classList.contains('active') ? projectId : null;
+    } else {
+        // Close previously open project
+        if (currentOpenProject) {
+            var prevCard = document.querySelector('[onclick="toggleProject(\'' + currentOpenProject + '\')"]');
+            var prevContent = document.getElementById(currentOpenProject);
+            if (prevCard && prevContent) {
+                prevCard.classList.remove('active');
+                prevContent.classList.remove('active');
+            }
+        }
+        
+        // Open new project
+        projectCard.classList.add('active');
+        projectContent.classList.add('active');
+        currentOpenProject = projectId;
+    }
+}
+
+// Switch between tabs within a project
+function showTab(projectId, tabName) {
+    var project = document.getElementById(projectId);
+    
+    // Hide all tabs
+    var panels = project.querySelectorAll('.tab-panel');
+    panels.forEach(function(panel) {
+        panel.classList.remove('active');
+    });
+    
+    // Remove active state from all tab buttons
+    var tabs = project.querySelectorAll('.project-tab');
+    tabs.forEach(function(tab) {
+        tab.classList.remove('active');
+    });
+    
+    // Show selected tab
+    var selectedPanel = document.getElementById(projectId + '-' + tabName);
+    if (selectedPanel) {
+        selectedPanel.classList.add('active');
+    }
+    
+    // Highlight selected tab button
+    event.currentTarget.classList.add('active');
+}
+</script>
 
 </body>
 </html>
