@@ -4,29 +4,140 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skills — Michael Butler</title>
-<link rel="stylesheet" href="styles.css">
 <style>
-/* Skill cards */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0 0 10px 0;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Skill card (clickable header) */
 .skill-card {
     background: #161b22;
     border: 1px solid #30363d;
     border-radius: 10px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 900px;
-    transition: transform 0.2s, background 0.2s;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
+
 .skill-card:hover {
-    transform: scale(1.02);
+    border-color: #58a6ff;
+}
+
+.skill-card.active {
+    border-color: #58a6ff;
+    box-shadow: 0 4px 20px rgba(88, 166, 255, 0.2);
+}
+
+/* Clickable header */
+.skill-header {
+    padding: 20px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+    user-select: none;
+}
+
+.skill-header:hover {
     background: #1d222b;
 }
-.skill-card h2 {
-    margin-top: 0;
-    margin-bottom: 12px;
-}
-.skill-card ul {
+
+.skill-header h2 {
     margin: 0;
-    padding-left: 20px;
+    font-size: 1.5rem;
+    color: #58a6ff;
+}
+
+.skill-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    color: #58a6ff;
+}
+
+.skill-card.active .skill-icon {
+    transform: rotate(180deg);
+}
+
+/* Expandable content */
+.skill-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.skill-content.active {
+    max-height: 1200px;
+}
+
+.skill-content-inner {
+    padding: 0 25px 25px 25px;
+}
+
+.skill-content-inner p {
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.95;
+}
+
+.skill-content-inner p:last-child {
+    margin-bottom: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #161b22;
+    border-top: 1px solid #30363d;
+    margin-top: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .skill-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .skill-header {
+        padding: 18px 20px;
+    }
+
+    .skill-content-inner {
+        padding: 0 20px 20px 20px;
+    }
 }
 </style>
 </head>
@@ -250,76 +361,95 @@
 
 <section>
 
-<div class="skill-card">
-    <h2>Embedded Systems & Microcontrollers</h2>
-    <ul>
-        <li>ESP32 (C6, S3, WROOM), Arduino, Raspberry Pi Zero 2 W</li>
-        <li>GPIO control, sensors, relays, motors, LED drivers, I2C/SPI/UART interfaces</li>
-        <li>Real-time systems, interrupts, low-level firmware debugging, and optimization</li>
-        <li>Custom hardware integration: creating modular, scalable embedded devices</li>
-        <li>Firmware development in C/C++ and MicroPython for IoT and automation projects</li>
-        <li>Prototyping from breadboard to PCB for functional proof-of-concept devices</li>
-    </ul>
+<!-- SKILL 1: Embedded Systems & Microcontrollers -->
+<!-- TO EDIT: Modify the text inside .skill-content-inner paragraphs -->
+<div class="skill-card" onclick="toggleSkill(this)">
+    <div class="skill-header">
+        <h2>Embedded Systems & Microcontrollers</h2>
+        <span class="skill-icon">▼</span>
+    </div>
+    <div class="skill-content">
+        <div class="skill-content-inner">
+            <p>I design and develop custom embedded systems using ESP32 (C6, S3, WROOM), Arduino, and Raspberry Pi platforms for IoT, automation, and hardware control applications. My work spans firmware development in C/C++ and MicroPython, integrating sensors, relays, motors, and communication interfaces (I2C, SPI, UART) to create responsive, real-time systems. I specialize in building devices that operate autonomously, handle complex timing requirements, and manage multiple concurrent tasks through interrupt-driven architectures.</p>
+            <p>From initial prototyping on breadboard to functional PCB-based devices, I handle the full development cycle—writing optimized firmware, debugging hardware-software interactions, and implementing low-level peripheral control. I've built Wi-Fi-enabled alarm systems with web-based interfaces, automated controllers with remote monitoring capabilities, and custom IoT devices that integrate seamlessly with existing infrastructure. My firmware design emphasizes power efficiency, robust error handling, and graceful failure modes that ensure systems remain operational even under adverse conditions.</p>
+            <p>I work extensively with GPIO control for interfacing with external hardware, implement ADC reading for analog sensors, and configure PWM for precise motor and LED control. My experience includes developing custom communication protocols, implementing secure over-the-air (OTA) firmware updates, and creating modular codebases that can be easily adapted for different hardware configurations. Whether working with battery-powered devices requiring ultra-low power consumption or always-on systems demanding reliable 24/7 operation, I deliver embedded solutions that are both technically sound and practically deployable.</p>
+        </div>
+    </div>
 </div>
 
-<div class="skill-card">
-    <h2>Programming & Software</h2>
-    <ul>
-        <li>C++ & C for embedded systems and microcontroller frameworks</li>
-        <li>Python for automation, networking, scripting, and tool development</li>
-        <li>JavaScript, HTML, CSS for web interfaces and IoT dashboards</li>
-        <li>Arduino and MicroPython environments</li>
-        <li>Git & GitHub for version control and collaborative development</li>
-        <li>Basic experience with Linux scripting and shell automation</li>
-    </ul>
-</div>
-    
-<div class="skill-card">
-    <h2>Electronics & Prototyping</h2>
-    <ul>
-        <li>Designing, soldering, and testing custom circuits from concept to functional prototype</li>
-        <li>Breadboard → prototype → PCB workflow for rapid iteration</li>
-        <li>Power regulation, logic-level design, and optimal component selection</li>
-        <li>Interfacing microcontrollers with hardware: motors, LEDs, sensors, relays</li>
-        <li>Troubleshooting and debugging hardware/software integration</li>
-        <li>Creating modular and scalable electronics for embedded projects</li>
-    </ul>
+<!-- SKILL 2: Programming & Software -->
+<div class="skill-card" onclick="toggleSkill(this)">
+    <div class="skill-header">
+        <h2>Programming & Software</h2>
+        <span class="skill-icon">▼</span>
+    </div>
+    <div class="skill-content">
+        <div class="skill-content-inner">
+            <p>I write efficient, maintainable code across multiple languages and platforms, with deep expertise in embedded C/C++ for microcontroller firmware where every byte of memory and CPU cycle matters. My programming focuses on creating reliable, deterministic systems that perform consistently under real-world conditions. I develop in Arduino and PlatformIO frameworks, implementing state machines, event-driven architectures, and non-blocking code patterns that keep embedded systems responsive.</p>
+            <p>In Python, I build automation tools, network management scripts, and device provisioning systems. I've created custom utilities for bulk device configuration, automated testing frameworks for embedded systems, and data processing pipelines for sensor networks. My Python work bridges the gap between embedded devices and higher-level systems—handling API integration, database operations, and file processing that support larger IoT deployments.</p>
+            <p>For user-facing applications, I develop web-based control interfaces using JavaScript, HTML, and CSS—creating real-time dashboards that communicate with embedded devices via WebSocket, REST APIs, or MQTT protocols. These interfaces provide intuitive device control, live sensor visualization, and system configuration without requiring native apps. I use Git and GitHub for version control, branching strategies, and collaborative development, maintaining clean commit histories and comprehensive documentation. My Linux scripting experience includes bash automation, systemd service management, and deployment workflows that streamline embedded device setup and maintenance.</p>
+        </div>
+    </div>
 </div>
 
-<div class="skill-card">
-    <h2>3D Printing & CAD</h2>
-    <ul>
-        <li>FDM printing with PETG, PLA, ABS, TPU, and other materials</li>
-        <li>Designing functional enclosures, mounts, interlocking and mechanical parts</li>
-        <li>FreeCAD for precise mechanical modeling and rapid prototyping</li>
-        <li>Tinkercad for fast concept iteration and drafting</li>
-        <li>Optimizing print settings for strength, flexibility, and material efficiency</li>
-        <li>Integrating CAD designs with electronics and embedded systems projects</li>
-    </ul>
+<!-- SKILL 3: Electronics & Prototyping -->
+<div class="skill-card" onclick="toggleSkill(this)">
+    <div class="skill-header">
+        <h2>Electronics & Prototyping</h2>
+        <span class="skill-icon">▼</span>
+    </div>
+    <div class="skill-content">
+        <div class="skill-content-inner">
+            <p>I design and build functional electronic circuits from concept through to working prototype, handling component selection, schematic design, and hands-on assembly. This includes designing voltage regulation systems (linear and switching), implementing proper logic-level conversion between 3.3V and 5V systems, and selecting components based on specifications, availability, and cost-effectiveness. I work with microcontrollers, motor drivers (H-bridges, stepper controllers), relay modules, sensor interfaces, and LED driver circuits, ensuring proper current limiting, pull-up/pull-down resistor configuration, and signal conditioning.</p>
+            <p>My prototyping workflow moves from breadboard testing to soldered perfboard or custom PCB designs. I use multimeters, logic analyzers, and oscilloscopes for debugging signal integrity issues, identifying short circuits, and verifying proper voltage levels throughout a circuit. I've troubleshot I2C bus conflicts, resolved SPI timing issues, and debugged UART communication problems by systematically isolating hardware from firmware issues. My experience includes working with both through-hole and surface-mount components, implementing proper decoupling capacitor placement, and designing circuits that are electromagnetically compatible and resistant to noise.</p>
+            <p>I create modular electronic systems that can be easily adapted for different projects—designing reusable power supply modules, standardized sensor interfaces, and plug-and-play actuator controls. Whether building a one-off prototype or designing something intended for small-batch production, I prioritize reliability, maintainability, and clear documentation. I understand the practical constraints of real-world electronics: heat dissipation, wire gauge selection, connector durability, and the importance of strain relief and proper enclosure grounding.</p>
+        </div>
+    </div>
 </div>
 
-<div class="skill-card">
-    <h2>Networking & Automation</h2>
-    <ul>
-        <li>WireGuard and other secure device-to-device VPN tunnels</li>
-        <li>Local network automation for IoT and microcontroller integration</li>
-        <li>Wi-Fi auto-connect, fallback networks, and failover logic</li>
-        <li>Remote monitoring and control of embedded systems</li>
-        <li>Custom scripts and tools to streamline repetitive tasks</li>
-        <li>Integration of sensors, relays, and actuators for automated workflows</li>
-    </ul>
+<!-- SKILL 4: 3D Printing & CAD -->
+<div class="skill-card" onclick="toggleSkill(this)">
+    <div class="skill-header">
+        <h2>3D Printing & CAD</h2>
+        <span class="skill-icon">▼</span>
+    </div>
+    <div class="skill-content">
+        <div class="skill-content-inner">
+            <p>I design and fabricate custom mechanical parts, enclosures, and mounting solutions using FDM 3D printing with materials including PETG, PLA, ABS, and TPU. My designs integrate directly with electronics projects—creating precision-fitted enclosures with proper tolerances for snap-fit assemblies, mounting bosses for PCBs, cable routing channels, and ports for connectors, buttons, and displays. I understand material properties: PETG for durability and chemical resistance, PLA for dimensional accuracy, ABS for heat resistance, and TPU for flexible gaskets and shock absorption.</p>
+            <p>I use FreeCAD for detailed parametric modeling where precise measurements and constraint-based design are critical, and Tinkercad for rapid concept iteration and simple modifications. My CAD workflow includes designing for manufacturability—adding proper chamfers and fillets to reduce stress concentration, incorporating print-in-place hinges and interlocking mechanisms, and optimizing part orientation for strength and minimal support material. I design threaded inserts, heat-set brass inserts, and custom mounting brackets that interface reliably with standard hardware.</p>
+            <p>My print optimization includes selecting appropriate layer heights, infill patterns, and wall thickness for each application—balancing print time, material usage, and mechanical strength. I tune print settings for waterproof enclosures with tight tolerances, flexible living hinges, and load-bearing structural components. I've designed enclosures with integrated mounting points for DIN rails, wall mounts, and desktop stands, along with cable management solutions, ventilation grilles, and modular expansion interfaces. Whether prototyping a concept overnight or producing a series of consistent parts, I ensure each design is printable, functional, and serves its intended purpose reliably.</p>
+        </div>
+    </div>
 </div>
 
-<div class="skill-card">
-    <h2>Workflow & Project Skills</h2>
-    <ul>
-        <li>End-to-end project development from concept to functional prototype</li>
-        <li>Rapid iteration combining electronics, firmware, and CAD design</li>
-        <li>Structured documentation for reproducible builds and troubleshooting</li>
-        <li>Debugging hardware/software interactions efficiently</li>
-        <li>Optimizing workflows for small-batch or custom production</li>
-        <li>Project planning, component sourcing, and timeline management</li>
-    </ul>
+<!-- SKILL 5: Networking & Automation -->
+<div class="skill-card" onclick="toggleSkill(this)">
+    <div class="skill-header">
+        <h2>Networking & Automation</h2>
+        <span class="skill-icon">▼</span>
+    </div>
+    <div class="skill-content">
+        <div class="skill-content-inner">
+            <p>I implement secure networking solutions for embedded systems and IoT devices, specializing in WireGuard VPN configurations for encrypted peer-to-peer and site-to-site communication. My work includes designing network architectures that allow embedded devices to communicate securely across the internet while remaining protected from unauthorized access. I configure firewall rules, implement NAT traversal, and set up persistent VPN connections that automatically reconnect after network disruptions or device reboots.</p>
+            <p>For Wi-Fi-connected devices, I develop robust connectivity logic with multi-network support, automatic reconnection with exponential backoff, fallback to known networks, and captive portal detection. I implement connection health monitoring that tracks signal strength, packet loss, and latency to proactively detect and respond to degraded network conditions. My firmware includes features like AP mode for initial device configuration, mDNS/Bonjour for easy device discovery on local networks, and DNS-SD for service advertisement.</p>
+            <p>I create automation systems that integrate sensors, actuators, and control logic into cohesive workflows—temperature-based HVAC control, motion-triggered lighting, time-scheduled irrigation systems, and multi-device coordination scenarios. I develop custom scripts and tools for device provisioning at scale, remote firmware updates, configuration backup and restore, and centralized logging and monitoring. Whether implementing MQTT pub/sub architectures for distributed sensor networks, REST APIs for device control, or WebSocket connections for real-time data streaming, I build networking solutions that are secure, reliable, and maintainable over the long term.</p>
+        </div>
+    </div>
+</div>
+
+<!-- SKILL 6: Workflow & Project Skills -->
+<div class="skill-card" onclick="toggleSkill(this)">
+    <div class="skill-header">
+        <h2>Workflow & Project Management</h2>
+        <span class="skill-icon">▼</span>
+    </div>
+    <div class="skill-content">
+        <div class="skill-content-inner">
+            <p>I manage end-to-end project development from initial concept and requirements gathering through design, prototyping, testing, validation, and final delivery. This includes coordinating multiple disciplines—electronics design, firmware development, mechanical CAD, and system integration—to create cohesive, functional products. I maintain structured documentation throughout the development process: detailed schematics, commented code with clear module organization, assembly instructions, bill of materials (BOM), and troubleshooting guides that enable reproducibility and knowledge transfer.</p>
+            <p>My workflow emphasizes rapid iteration and systematic problem-solving. I prototype quickly to validate concepts, identify issues early, and refine designs based on real-world testing. I source components strategically—balancing cost, availability, lead times, and performance requirements—and maintain organized inventories with proper part tracking. I plan realistic project timelines by breaking complex projects into measurable milestones, identifying critical path dependencies, and building in buffer time for unexpected challenges. When debugging issues, I use systematic elimination: isolating variables, testing components individually, and documenting findings to build institutional knowledge.</p>
+            <p>I communicate clearly with clients and collaborators, translating technical requirements into actionable development plans and explaining complex technical concepts in accessible language. Whether developing custom one-off builds tailored to specific requirements or preparing designs for small-batch production with consistent quality, I optimize processes for efficiency without sacrificing reliability. I implement version control for hardware designs, maintain change logs for firmware releases, and create test procedures that validate functionality at each development stage. My project management approach ensures that technical excellence aligns with practical constraints like budget, timeline, and manufacturability.</p>
+        </div>
+    </div>
 </div>
 
 </section>
@@ -328,6 +458,34 @@
 © 2025 Michael Butler — Portfolio
 </footer>
 
+<!-- Skill Accordion Logic -->
+<script>
+// Track currently open skill
+var currentOpenSkill = null;
+
+function toggleSkill(element) {
+    var content = element.querySelector('.skill-content');
+    
+    // If clicking the same skill, just toggle it
+    if (currentOpenSkill === element) {
+        element.classList.toggle('active');
+        content.classList.toggle('active');
+        currentOpenSkill = content.classList.contains('active') ? element : null;
+    } else {
+        // Close previously open skill
+        if (currentOpenSkill) {
+            var prevContent = currentOpenSkill.querySelector('.skill-content');
+            currentOpenSkill.classList.remove('active');
+            prevContent.classList.remove('active');
+        }
+        
+        // Open new skill
+        element.classList.add('active');
+        content.classList.add('active');
+        currentOpenSkill = element;
+    }
+}
+</script>
+
 </body>
 </html>
-
