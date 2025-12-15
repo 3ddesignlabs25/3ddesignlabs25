@@ -3,13 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Michael Butler — Embedded Systems & 3D Fabrication</title>
-<link rel="stylesheet" href="styles.css">
+<title>About — Michael Butler</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 60px 20px;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0 0 15px 0;
+    background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+header .tagline {
+    font-size: 1.3rem;
+    color: #8b949e;
+    font-weight: 400;
+    margin: 0;
+}
+
+section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Main content blocks */
+.content-block {
+    margin-bottom: 50px;
+}
+
+.content-block h2 {
+    font-size: 1.8rem;
+    color: #58a6ff;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #30363d;
+}
+
+.content-block p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #c9d1d9;
+    margin: 0 0 20px 0;
+}
+
+.content-block p:last-child {
+    margin-bottom: 0;
+}
+
+/* Highlight box */
+.highlight-box {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-left: 4px solid #58a6ff;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin: 30px 0;
+}
+
+.highlight-box h3 {
+    font-size: 1.3rem;
+    color: #e6edf3;
+    margin: 0 0 15px 0;
+}
+
+.highlight-box p {
+    color: #8b949e;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Key areas grid */
+.key-areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.area-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.area-card:hover {
+    border-color: #58a6ff;
+    transform: translateY(-3px);
+}
+
+.area-card h4 {
+    font-size: 1.1rem;
+    color: #58a6ff;
+    margin: 0 0 10px 0;
+}
+
+.area-card p {
+    font-size: 0.95rem;
+    color: #8b949e;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    color: #e6edf3;
+    margin: 0 0 15px 0;
+    border: none;
+    padding: 0;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: #8b949e;
+    margin: 0 0 30px 0;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: #238636;
+    color: white;
+    border: 2px solid #238636;
+}
+
+.btn-primary:hover {
+    background: #2ea043;
+    border-color: #2ea043;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #58a6ff;
+    border: 2px solid #58a6ff;
+}
+
+.btn-secondary:hover {
+    background: rgba(88, 166, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #161b22;
+    border-top: 1px solid #30363d;
+    margin-top: 50px;
+    color: #8b949e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header .tagline {
+        font-size: 1.1rem;
+    }
+
+    .content-block h2 {
+        font-size: 1.5rem;
+    }
+
+    .key-areas {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
 </head>
 <body>
 
 <!-- NAVIGATION -->
-<!-- START: Reusable Navigation Block -->
 <style>
 .site-nav {
   background: #161b22;
@@ -172,7 +391,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="skills.html">Skills</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="3dprints.html">3D Prints</a></li>
+      <li><a href="resources.html">Resources</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="quote.html">Get a Quote</a></li>
     </ul>
@@ -217,48 +436,82 @@
   }
 })();
 </script>
-<!-- END: Reusable Navigation Block -->
-<!-- HEADER -->
+
 <header>
-    <h1>Michael Butler</h1>
-    <p>Embedded Systems & 3D Fabrication Specialist</p>
+    <h1>About</h1>
+    <p class="tagline">Building functional hardware where firmware, circuits, and fabrication converge</p>
 </header>
 
-<!-- ABOUT -->
-<section id="about">
-    <h2>About Me</h2>
-    <p style="font-size:18px;">
-        I’m an embedded systems and 3D fabrication enthusiast who loves building physical, functional technology.  
-        I work with a variety of microcontrollers including ESP32 (C6, S3, WROOM), Raspberry Pi Zero 2 W, and Arduino-based boards, and I specialize in integrating electronics, firmware, and mechanical design into complete, reliable projects.  
-        From motor control to IoT devices, automation, and wireless communication, I enjoy creating systems where hardware and software work seamlessly together.
-    </p>
+<section>
 
-    <p style="font-size:18px; margin-top:15px;">
-        My workflow often begins with raw ideas that evolve into custom hardware solutions.  
-        This involves writing modular firmware, designing and soldering circuits, creating PCBs, prototyping with breadboards, 3D modeling and printing parts, and testing components thoroughly.  
-        I focus on iterative refinement, ensuring every build is stable, efficient, and practical for real-world use.
-    </p>
+    <!-- Opening Hook -->
+    <div class="content-block">
+        <p style="font-size: 1.15rem; color: #e6edf3;">I design and build embedded systems that solve real problems—devices that operate reliably, integrate cleanly, and work the first time they're powered on.</p>
+    </div>
 
-    <p style="font-size:18px; margin-top:15px;">
-        I’m skilled in programming across multiple languages and environments:  
-        C++ for embedded systems, Python for automation and scripting, and web-based interfaces for microcontroller configuration.  
-        I also use Git & GitHub for version control, keeping projects organized and collaborative-ready.
-    </p>
+    <!-- Background -->
+    <div class="content-block">
+        <h2>How I Got Here</h2>
+        <p>My path into embedded systems started with curiosity about how things work and frustration with devices that didn't. I began taking apart electronics to understand their design, then moved to building my own—first simple Arduino projects, then increasingly complex systems combining custom firmware, circuit design, and 3D-printed enclosures.</p>
+        <p>What started as personal projects evolved into a skillset: writing optimized C/C++ firmware, designing circuits from breadboard to PCB, and creating precision mechanical parts that integrate seamlessly with electronics. I learned by building real devices for real use cases, iterating until they worked reliably under actual operating conditions.</p>
+    </div>
 
-    <p style="font-size:18px; margin-top:15px;">
-        Beyond electronics and firmware, I bring mechanical and fabrication expertise to every project.  
-        I work with multiple 3D printing materials including PETG, PLA, ABS, and TPU, and design functional enclosures, mounts, and interlocking parts using FreeCAD and Tinkercad.  
-        My approach integrates electronics, software, and mechanical design for fully realized, hands-on solutions.
-    </p>
+    <!-- What I Build Now -->
+    <div class="content-block">
+        <h2>What I Build Now</h2>
+        <p>I develop complete embedded systems—from initial concept through working prototype to deployed device. This includes firmware development for ESP32, Arduino, and Raspberry Pi platforms, circuit design and assembly, and CAD modeling for functional enclosures and mounting solutions.</p>
+        
+        <div class="key-areas">
+            <div class="area-card">
+                <h4>IoT & Automation</h4>
+                <p>Wi-Fi-connected devices with secure networking, remote monitoring, and automated control workflows.</p>
+            </div>
+            <div class="area-card">
+                <h4>Firmware & Programming</h4>
+                <p>Optimized C/C++ and Python code for embedded systems, web interfaces, and automation tools with robust error handling.</p>
+            </div>
+            <div class="area-card">
+                <h4>Hardware Integration</h4>
+                <p>Interfacing microcontrollers with sensors, motors, relays, and displays through optimized firmware and proper circuit design.</p>
+            </div>
+            <div class="area-card">
+                <h4>Networking & Security</h4>
+                <p>WireGuard VPN tunnels, secure Wi-Fi connectivity with failover logic, and remote device management systems.</p>
+            </div>
+            <div class="area-card">
+                <h4>Custom Fabrication</h4>
+                <p>3D-printed enclosures and mechanical assemblies designed for real-world use, not just prototypes.</p>
+            </div>
+        </div>
+    </div>
 
-    <p style="font-size:18px; margin-top:15px;">
-        My workflow and project skills include structured documentation, rapid iteration, debugging hardware/software interactions, optimizing workflows for small-batch production, and managing project timelines from concept to finished device.  
-        Whether it’s prototyping, consulting, or full custom builds, I focus on practical, real-world engineering that works.
-    </p>
+    <!-- What Sets Me Apart -->
+    <div class="highlight-box">
+        <h3>What Makes This Work Different</h3>
+        <p>I don't separate hardware, firmware, and mechanical design into isolated phases—I develop them concurrently. A circuit isn't done when it works on a breadboard; it's done when it's integrated into an enclosure with proper cable management, strain relief, and mounting hardware. Firmware isn't finished when the features work; it's finished when error handling is robust, power consumption is optimized, and the system recovers gracefully from failures.</p>
+    </div>
+
+    <!-- Current Focus -->
+    <div class="content-block">
+        <h2>Current Focus</h2>
+        <p>I'm currently working on Wi-Fi-enabled automation controllers and IoT devices that prioritize reliability and security. My recent projects involve WireGuard VPN integration for secure device communication, custom web interfaces for real-time monitoring, and 3D-printed enclosures designed for both desktop and permanent installation.</p>
+        <p>I document my builds on Instagram and maintain open-source design files for projects where sharing the work adds value to the community. If you're building something similar or looking to collaborate, reach out—I'm always interested in solving interesting technical problems.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <h2>Let's Build Something</h2>
+        <p>Whether you need a custom device, technical consultation, or want to collaborate on a project</p>
+        <div class="cta-buttons">
+            <a href="projects.html" class="btn btn-primary">View My Work</a>
+            <a href="quote.html" class="btn btn-secondary">Get a Quote</a>
+        </div>
+    </div>
+
 </section>
 
 <footer>
-    © 2025 Michael Butler
+    © 2025 Michael Butler — Embedded Systems & 3D Fabrication
 </footer>
 
 </body>
