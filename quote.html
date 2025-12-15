@@ -48,7 +48,7 @@ section { padding:50px 20px; max-width:900px; margin:auto; }
 <section>
 
 <div class="contact-info">
-<p><strong>From concept to creation, let’s make it real.</strong></p>
+<p><strong>From concept to creation, let's make it real.</strong></p>
 <p>Email: <a href="mailto:3d.designlabs@gmail.com">3d.designlabs@gmail.com</a></p>
 <p>Phone: <a href="tel:+19094350542">+1 (909) 435-0542</a></p>
 </div>
@@ -76,7 +76,7 @@ section { padding:50px 20px; max-width:900px; margin:auto; }
 <option value="Consulting / Tech Support">Consulting / Tech Support</option>
 </select>
 
-<!-- 3D printing secondary -->
+<!-- 3D printing fields -->
 <div id="printing-fields" style="display:none; margin-top:15px;">
 <label for="material">Material</label>
 <select id="material" name="material">
@@ -98,32 +98,147 @@ section { padding:50px 20px; max-width:900px; margin:auto; }
 </select>
 </div>
 
-<!-- Other services secondary -->
-<div id="service-fields" style="display:none; margin-top:15px;">
-<label for="basePrice">Base Price</label>
-<select id="basePrice" name="basePrice">
-<option value="75">Embedded Systems Build — $75</option>
-<option value="60">Coding / Firmware Development — $60</option>
-<option value="45">Electronics Assembly / Wiring — $45</option>
-<option value="40">Product Repair — $40</option>
-<option value="50">CAD Modeling / Design — $50</option>
-<option value="35">Consulting / Tech Support — $35</option>
+<!-- Embedded Systems Build -->
+<div id="embedded-fields" style="display:none; margin-top:15px;">
+<label for="emb-mcus">Number of Microcontrollers</label>
+<select id="emb-mcus" name="emb_mcus">
+<option value="1">1 MCU</option>
+<option value="2">2 MCUs (+$45)</option>
+<option value="3">3+ MCUs (+$80)</option>
 </select>
 
-<label for="addon">Optional Add-on Cost ($)</label>
-<input type="number" id="addon" name="addon" value="0" placeholder="Extra parts / flat fee">
-
-<label for="difficulty">Difficulty</label>
-<select id="difficulty" name="difficulty">
-<option value="1">Easy (1×)</option>
-<option value="1.5">Medium (1.5×)</option>
-<option value="2">Hard (2×)</option>
+<label for="emb-wireless">Wireless Features</label>
+<select id="emb-wireless" name="emb_wireless">
+<option value="0">None</option>
+<option value="35">WiFi (+$35)</option>
+<option value="30">BLE (+$30)</option>
+<option value="55">WiFi + BLE (+$55)</option>
 </select>
 
-<label for="rush">Rush Order</label>
-<select id="rush" name="rush">
-<option value="1">No</option>
-<option value="1.3">Yes — Rush (+30%)</option>
+<label for="emb-display">Display Included</label>
+<select id="emb-display" name="emb_display">
+<option value="0">No</option>
+<option value="50">Yes (+$50)</option>
+</select>
+
+<label for="emb-power">Power System</label>
+<select id="emb-power" name="emb_power">
+<option value="0">USB Only</option>
+<option value="30">Battery (+$30)</option>
+<option value="45">USB + Battery (+$45)</option>
+</select>
+</div>
+
+<!-- Coding / Firmware Development -->
+<div id="coding-fields" style="display:none; margin-top:15px;">
+<label for="code-project-type">Project Type</label>
+<select id="code-project-type" name="code_project_type">
+<option value="0">Simple Script / Automation</option>
+<option value="50">Device Firmware (runs on hardware) (+$50)</option>
+<option value="65">Desktop Application (+$65)</option>
+<option value="80">Single-Page Web App (+$80)</option>
+<option value="120">Multi-Page Web Application (+$120)</option>
+</select>
+
+<label for="code-functionality">Functionality Level</label>
+<select id="code-functionality" name="code_functionality">
+<option value="0">Basic Logic / Controls</option>
+<option value="35">User Input + Validation (+$35)</option>
+<option value="55">Data Storage or State Handling (+$55)</option>
+<option value="70">API or Device Communication (+$70)</option>
+</select>
+
+<label for="code-platform">Platform / Environment</label>
+<select id="code-platform" name="code_platform">
+<option value="0">Microcontroller (ESP32 / Arduino)</option>
+<option value="30">Raspberry Pi / Linux Device (+$30)</option>
+<option value="40">Browser-Based (HTML/CSS/JS) (+$40)</option>
+<option value="50">Cross-Platform (+$50)</option>
+</select>
+</div>
+
+<!-- Electronics Assembly / Wiring -->
+<div id="electronics-fields" style="display:none; margin-top:15px;">
+<label for="elec-components">Number of Components</label>
+<select id="elec-components" name="elec_components">
+<option value="0">1-10 components</option>
+<option value="30">11-25 components (+$30)</option>
+<option value="60">26-50 components (+$60)</option>
+<option value="100">50+ components (+$100)</option>
+</select>
+
+<label for="elec-type">Assembly Type</label>
+<select id="elec-type" name="elec_type">
+<option value="0">Through-hole</option>
+<option value="50">SMD (+$50)</option>
+<option value="75">Mixed SMD + Through-hole (+$75)</option>
+</select>
+
+<label for="elec-enclosure">Enclosure Wiring</label>
+<select id="elec-enclosure" name="elec_enclosure">
+<option value="0">No</option>
+<option value="35">Yes (+$35)</option>
+</select>
+</div>
+
+<!-- Product Repair -->
+<div id="repair-fields" style="display:none; margin-top:15px;">
+<label for="repair-device">Device Type</label>
+<select id="repair-device" name="repair_device">
+<option value="0">Consumer Electronics</option>
+<option value="45">Industrial Equipment (+$45)</option>
+</select>
+
+<label for="repair-type">Repair Type</label>
+<select id="repair-type" name="repair_type">
+<option value="0">Electrical</option>
+<option value="25">Mechanical (+$25)</option>
+<option value="40">Electrical + Mechanical (+$40)</option>
+</select>
+
+<label for="repair-diagnostic">Diagnostic Required</label>
+<select id="repair-diagnostic" name="repair_diagnostic">
+<option value="0">No</option>
+<option value="30">Yes (+$30)</option>
+</select>
+</div>
+
+<!-- CAD Modeling / Design -->
+<div id="cad-fields" style="display:none; margin-top:15px;">
+<label for="cad-scope">Project Scope</label>
+<select id="cad-scope" name="cad_scope">
+<option value="0">Modify Existing Design</option>
+<option value="60">New Design (+$60)</option>
+</select>
+
+<label for="cad-complexity">Part Complexity</label>
+<select id="cad-complexity" name="cad_complexity">
+<option value="0">Flat/Simple</option>
+<option value="45">Mechanical (+$45)</option>
+<option value="75">Organic/Complex (+$75)</option>
+</select>
+
+<label for="cad-export">Print-Ready Export</label>
+<select id="cad-export" name="cad_export">
+<option value="0">No</option>
+<option value="25">Yes (+$25)</option>
+</select>
+</div>
+
+<!-- Consulting / Tech Support -->
+<div id="consulting-fields" style="display:none; margin-top:15px;">
+<label for="consult-time">Time Block</label>
+<select id="consult-time" name="consult_time">
+<option value="50">30 minutes ($50)</option>
+<option value="85">1 hour ($85)</option>
+<option value="160">2 hours ($160)</option>
+<option value="300">4 hours ($300)</option>
+</select>
+
+<label for="consult-location">Session Type</label>
+<select id="consult-location" name="consult_location">
+<option value="0">Remote</option>
+<option value="35">In-Person (+$35)</option>
 </select>
 </div>
 
@@ -146,56 +261,178 @@ section { padding:50px 20px; max-width:900px; margin:auto; }
 </footer>
 
 <script>
-// Material cost per gram with 20% markup
+// Material cost per gram with 20% markup (market accurate 2025)
 const materialCost = { PLA:0.072, PETG:0.084, ABS:0.108, TPU:0.114 };
+
+// Base prices updated to 2025 market rates
+const basePrices = {
+    'Embedded Systems Build': 120,      // Market: $60-120/hr for 2hr minimum project
+    'Coding / Firmware Development': 90, // Market: $60-120/hr for 1.5hr minimum
+    'Electronics Assembly / Wiring': 65, // Market: $45-75/hr base
+    'Product Repair': 60,                // Market: $40-80/hr diagnostic+repair
+    'CAD Modeling / Design': 75,         // Market: $50-100/hr for product design
+    'Consulting / Tech Support': 0       // Time-based pricing
+};
+
 const serviceEl = document.getElementById('service');
 const printingFields = document.getElementById('printing-fields');
-const serviceFields = document.getElementById('service-fields');
+const embeddedFields = document.getElementById('embedded-fields');
+const codingFields = document.getElementById('coding-fields');
+const electronicsFields = document.getElementById('electronics-fields');
+const repairFields = document.getElementById('repair-fields');
+const cadFields = document.getElementById('cad-fields');
+const consultingFields = document.getElementById('consulting-fields');
 const calcBtn = document.getElementById('calcBtn');
 const quoteResult = document.getElementById('quote-result');
 const finalQuoteInput = document.getElementById('final-quote');
 
-serviceEl.addEventListener('change', ()=>{
-    if(serviceEl.value==='3D Printing'){
-        printingFields.style.display='block';
-        serviceFields.style.display='none';
-    } else if(serviceEl.value!==''){
-        printingFields.style.display='none';
-        serviceFields.style.display='block';
-    } else {
-        printingFields.style.display='none';
-        serviceFields.style.display='none';
+// Hide all service fields
+function hideAllFields() {
+    printingFields.style.display = 'none';
+    embeddedFields.style.display = 'none';
+    codingFields.style.display = 'none';
+    electronicsFields.style.display = 'none';
+    repairFields.style.display = 'none';
+    cadFields.style.display = 'none';
+    consultingFields.style.display = 'none';
+}
+
+// Show appropriate fields based on service selection
+serviceEl.addEventListener('change', () => {
+    hideAllFields();
+    quoteResult.style.display = 'none';
+    finalQuoteInput.value = '';
+    
+    switch(serviceEl.value) {
+        case '3D Printing':
+            printingFields.style.display = 'block';
+            break;
+        case 'Embedded Systems Build':
+            embeddedFields.style.display = 'block';
+            break;
+        case 'Coding / Firmware Development':
+            codingFields.style.display = 'block';
+            break;
+        case 'Electronics Assembly / Wiring':
+            electronicsFields.style.display = 'block';
+            break;
+        case 'Product Repair':
+            repairFields.style.display = 'block';
+            break;
+        case 'CAD Modeling / Design':
+            cadFields.style.display = 'block';
+            break;
+        case 'Consulting / Tech Support':
+            consultingFields.style.display = 'block';
+            break;
     }
-    quoteResult.style.display='none';
-    finalQuoteInput.value='';
 });
 
-// Calculate quote
-calcBtn.addEventListener('click', ()=>{
-    if(serviceEl.value==='3D Printing'){
+// Calculate quote based on selected service
+calcBtn.addEventListener('click', () => {
+    const service = serviceEl.value;
+    
+    if (service === '3D Printing') {
+        // 3D printing calculation (unchanged, already market accurate)
         const material = document.getElementById('material').value;
-        const l = parseFloat(document.getElementById('length').value)||0;
-        const w = parseFloat(document.getElementById('width').value)||0;
-        const h = parseFloat(document.getElementById('height').value)||0;
-        const infill = parseFloat(document.getElementById('infill').value)||0.15;
-        if(!l||!w||!h){ alert('Enter L/W/H'); return; }
-        const volume = l*w*h;
-        const weight = volume*infill/1000;
+        const l = parseFloat(document.getElementById('length').value) || 0;
+        const w = parseFloat(document.getElementById('width').value) || 0;
+        const h = parseFloat(document.getElementById('height').value) || 0;
+        const infill = parseFloat(document.getElementById('infill').value) || 0.15;
+        
+        if (!l || !w || !h) {
+            alert('Enter L/W/H');
+            return;
+        }
+        
+        const volume = l * w * h;
+        const weight = volume * infill / 1000;
         const base = 25;
-        const cost = (weight*materialCost[material]+base).toFixed(2);
-        quoteResult.style.display='block';
-        quoteResult.innerHTML=`<strong>Estimate: $${cost}</strong><br><span class="small">Material: ${material}, Est. ${weight.toFixed(1)} g</span>`;
-        finalQuoteInput.value=cost;
-    } else if(serviceEl.value!==''){
-        const base = parseFloat(document.getElementById('basePrice').value)||50;
-        const addonUnits = parseFloat(document.getElementById('addon').value)||0;
-        const addon = addonUnits * 5; // 
-        const difficulty = parseFloat(document.getElementById('difficulty').value)||1;
-        const rush = parseFloat(document.getElementById('rush').value)||1;
-        const cost = ((base*difficulty + addon)*rush).toFixed(2);
-        quoteResult.style.display='block';
-        quoteResult.innerHTML=`<strong>Estimate: $${cost}</strong><br><span class="small">Base: $${base}, Add-on: $${addon}, Difficulty ×${difficulty}, Rush ×${rush}</span>`;
-        finalQuoteInput.value=cost;
+        const cost = (weight * materialCost[material] + base).toFixed(2);
+        
+        quoteResult.style.display = 'block';
+        quoteResult.innerHTML = `<strong>Estimate: $${cost}</strong><br><span class="small">Material: ${material}, Est. ${weight.toFixed(1)} g</span>`;
+        finalQuoteInput.value = cost;
+        
+    } else if (service === 'Embedded Systems Build') {
+        // Base price + parameter-based additions (updated to market rates)
+        let cost = basePrices[service];
+        const mcus = parseInt(document.getElementById('emb-mcus').value);
+        const wireless = parseInt(document.getElementById('emb-wireless').value);
+        const display = parseInt(document.getElementById('emb-display').value);
+        const power = parseInt(document.getElementById('emb-power').value);
+        
+        // MCU cost: 1=$0, 2=$45, 3+=$80
+        cost += (mcus - 1) * 45;
+        cost += wireless + display + power;
+        
+        quoteResult.style.display = 'block';
+        quoteResult.innerHTML = `<strong>Estimate: $${cost.toFixed(2)}</strong><br><span class="small">Base: $${basePrices[service]}, Parameters: $${(cost - basePrices[service]).toFixed(2)}</span>`;
+        finalQuoteInput.value = cost.toFixed(2);
+        
+    } else if (service === 'Coding / Firmware Development') {
+        // Base price + outcome-based parameters (updated to market rates)
+        let cost = basePrices[service];
+        const projectType = parseInt(document.getElementById('code-project-type').value);
+        const functionality = parseInt(document.getElementById('code-functionality').value);
+        const platform = parseInt(document.getElementById('code-platform').value);
+        
+        // Add each parameter cost (purely additive, market-accurate)
+        cost += projectType + functionality + platform;
+        
+        quoteResult.style.display = 'block';
+        quoteResult.innerHTML = `<strong>Estimate: $${cost.toFixed(2)}</strong><br><span class="small">Base: $${basePrices[service]}, Parameters: $${(cost - basePrices[service]).toFixed(2)}</span>`;
+        finalQuoteInput.value = cost.toFixed(2);
+        
+    } else if (service === 'Electronics Assembly / Wiring') {
+        // Base price + component count + assembly type + enclosure (updated to market rates)
+        let cost = basePrices[service];
+        const components = parseInt(document.getElementById('elec-components').value);
+        const type = parseInt(document.getElementById('elec-type').value);
+        const enclosure = parseInt(document.getElementById('elec-enclosure').value);
+        
+        cost += components + type + enclosure;
+        
+        quoteResult.style.display = 'block';
+        quoteResult.innerHTML = `<strong>Estimate: $${cost.toFixed(2)}</strong><br><span class="small">Base: $${basePrices[service]}, Parameters: $${(cost - basePrices[service]).toFixed(2)}</span>`;
+        finalQuoteInput.value = cost.toFixed(2);
+        
+    } else if (service === 'Product Repair') {
+        // Base price + device type + repair type + diagnostic (updated to market rates)
+        let cost = basePrices[service];
+        const device = parseInt(document.getElementById('repair-device').value);
+        const type = parseInt(document.getElementById('repair-type').value);
+        const diagnostic = parseInt(document.getElementById('repair-diagnostic').value);
+        
+        cost += device + type + diagnostic;
+        
+        quoteResult.style.display = 'block';
+        quoteResult.innerHTML = `<strong>Estimate: $${cost.toFixed(2)}</strong><br><span class="small">Base: $${basePrices[service]}, Parameters: $${(cost - basePrices[service]).toFixed(2)}</span>`;
+        finalQuoteInput.value = cost.toFixed(2);
+        
+    } else if (service === 'CAD Modeling / Design') {
+        // Base price + scope + complexity + export (updated to market rates)
+        let cost = basePrices[service];
+        const scope = parseInt(document.getElementById('cad-scope').value);
+        const complexity = parseInt(document.getElementById('cad-complexity').value);
+        const exportOpt = parseInt(document.getElementById('cad-export').value);
+        
+        cost += scope + complexity + exportOpt;
+        
+        quoteResult.style.display = 'block';
+        quoteResult.innerHTML = `<strong>Estimate: $${cost.toFixed(2)}</strong><br><span class="small">Base: $${basePrices[service]}, Parameters: $${(cost - basePrices[service]).toFixed(2)}</span>`;
+        finalQuoteInput.value = cost.toFixed(2);
+        
+    } else if (service === 'Consulting / Tech Support') {
+        // Time-based pricing + location modifier (updated to market rates)
+        const time = parseInt(document.getElementById('consult-time').value);
+        const location = parseInt(document.getElementById('consult-location').value);
+        
+        const cost = time + location;
+        
+        quoteResult.style.display = 'block';
+        quoteResult.innerHTML = `<strong>Estimate: $${cost.toFixed(2)}</strong><br><span class="small">Time block: $${time}, Location: +$${location}</span>`;
+        finalQuoteInput.value = cost.toFixed(2);
     }
 });
 </script>
