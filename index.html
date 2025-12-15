@@ -3,86 +3,608 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Michael Butler — Portfolio</title>
-<link rel="stylesheet" href="styles.css">
+<title>Michael Butler — Embedded Systems & 3D Fabrication</title>
 <style>
-/* Landing Page Specific Styles */
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     background: #0d1117;
     color: #e6edf3;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-header {
-    margin-bottom: 50px;
+/* Animated background with moving gradient */
+.bg-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        radial-gradient(ellipse at 20% 30%, rgba(88, 166, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(56, 139, 253, 0.08) 0%, transparent 50%);
+    animation: gradientShift 15s ease infinite;
 }
 
-header h1 {
-    font-size: 3rem;
-    margin: 0;
+@keyframes gradientShift {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
 }
 
-header p {
-    font-size: 1.5rem;
-    opacity: 0.8;
-    margin-top: 10px;
+/* Floating particles */
+.bg-gradient::before,
+.bg-gradient::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.1;
+    animation: float 20s ease-in-out infinite;
 }
 
-.landing-buttons {
+.bg-gradient::before {
+    background: #58a6ff;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.bg-gradient::after {
+    background: #79c0ff;
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 10s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-30px, 30px) scale(0.9);
+    }
+}
+
+/* Navigation */
+.site-nav {
+    background: rgba(22, 27, 34, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #30363d;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 20px;
+}
+
+.site-nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-nav-toggle {
+    background: none;
+    border: none;
+    color: #e6edf3;
+    cursor: pointer;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.site-nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #e6edf3;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.site-nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.site-nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.site-nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.site-nav-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100vh;
+    background: #161b22;
+    border-left: 1px solid #30363d;
+    list-style: none;
+    margin: 0;
+    padding: 80px 0 20px 0;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.site-nav-menu.active {
+    right: 0;
+}
+
+.site-nav-menu li {
+    margin: 0;
+    border-bottom: 1px solid #30363d;
+}
+
+.site-nav-menu a {
+    display: block;
+    padding: 18px 30px;
+    color: #e6edf3;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: all 0.2s;
+    font-size: 16px;
+}
+
+.site-nav-menu a:hover {
+    opacity: 1;
+    background: #0d1117;
+    padding-left: 35px;
+}
+
+.site-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.site-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hero Section */
+.hero {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 120px 20px 80px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 0.8s ease;
+}
+
+.hero .tagline {
+    font-size: 1.5rem;
+    color: #8b949e;
+    margin-bottom: 15px;
+    font-weight: 400;
+    animation: fadeInUp 1s ease;
+}
+
+.hero .subtext {
+    font-size: 1.1rem;
+    color: #8b949e;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    line-height: 1.8;
+    animation: fadeInUp 1.2s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* What I Build Section */
+.what-i-build {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.what-i-build h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #e6edf3;
+}
+
+.build-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.build-item {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.build-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.build-item:hover::before {
+    left: 100%;
+}
+
+.build-item:hover {
+    border-color: #58a6ff;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(88, 166, 255, 0.15);
+}
+
+.build-item h3 {
+    font-size: 1.3rem;
+    color: #58a6ff;
+    margin-bottom: 12px;
+}
+
+.build-item p {
+    color: #8b949e;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #e6edf3;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: #8b949e;
+    margin-bottom: 40px;
+}
+
+.cta-buttons {
+    display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-.landing-buttons a {
-    padding: 15px 30px;
-    border-radius: 10px;
+.btn {
+    padding: 15px 35px;
+    border-radius: 8px;
     text-decoration: none;
-    background: #161b22;
-    color: #e6edf3;
-    font-weight: bold;
-    transition: transform 0.2s, background 0.2s;
-    border: 1px solid #30363d;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
 }
 
-.landing-buttons a:hover {
-    background: #1d222b;
-    transform: scale(1.05);
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
 }
 
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn svg {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary {
+    background: #238636;
+    color: white;
+    border: 2px solid #238636;
+}
+
+.btn-primary:hover {
+    background: #2ea043;
+    border-color: #2ea043;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(35, 134, 54, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #58a6ff;
+    border: 2px solid #58a6ff;
+}
+
+.btn-secondary:hover {
+    background: rgba(88, 166, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    border: 2px solid transparent;
+}
+
+.btn-instagram:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(225, 48, 108, 0.4);
+}
+
+/* Footer */
 footer {
-    margin-top: 50px;
-    opacity: 0.6;
+    text-align: center;
+    padding: 40px 20px;
+    background: #161b22;
+    border-top: 1px solid #30363d;
+    margin-top: 60px;
+    color: #8b949e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .tagline {
+        font-size: 1.2rem;
+    }
+
+    .hero .subtext {
+        font-size: 1rem;
+    }
+
+    .build-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 769px) {
+    .site-nav-menu {
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        border: none;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        overflow-y: visible;
+    }
+
+    .site-nav-menu li {
+        border: none;
+    }
+
+    .site-nav-menu a {
+        padding: 10px 0;
+    }
+
+    .site-nav-menu a:hover {
+        padding-left: 0;
+        background: transparent;
+    }
+
+    .site-nav-toggle {
+        display: none;
+    }
+
+    .site-nav-overlay {
+        display: none;
+    }
 }
 </style>
 </head>
 <body>
 
-<header>
-    <h1>Michael Butler</h1>
-    <p>Embedded Systems • 3D Fabrication • Automation</p>
-</header>
+<div class="bg-gradient"></div>
 
-<div class="landing-buttons">
-    <a href="about.html">About Me</a>
-    <a href="skills.html">Skills</a>
-    <a href="projects.html">Projects</a>
-    <a href="3dprints.html">3D Prints</a>
-    <a href="services.html">Services</a>
-    <a href="quote.html">Get a Quote</a>
-</div>
+<!-- Navigation -->
+<div class="site-nav-overlay"></div>
+
+<nav class="site-nav">
+    <div class="site-nav-container">
+        <button class="site-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="site-nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="3dprints.html">3D Prints</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="quote.html">Get a Quote</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Michael Butler</h1>
+    <p class="tagline">Embedded Systems • Electronics • 3D Fabrication</p>
+    <p class="subtext">Building functional hardware from concept to reality—where firmware, circuits, and mechanical design come together.</p>
+</section>
+
+<!-- What I Build Section -->
+<section class="what-i-build">
+    <h2>What I Build</h2>
+    <div class="build-grid">
+        <div class="build-item">
+            <h3>Embedded Systems</h3>
+            <p>Custom firmware for ESP32, Arduino, and Raspberry Pi—creating IoT devices, automation controllers, and real-time systems with Wi-Fi connectivity and sensor integration.</p>
+        </div>
+        <div class="build-item">
+            <h3>Electronics Design</h3>
+            <p>Circuit design, prototyping, and PCB development—from breadboard concept to functional hardware with motor drivers, relays, and power regulation.</p>
+        </div>
+        <div class="build-item">
+            <h3>3D Fabrication</h3>
+            <p>Precision CAD modeling and FDM printing with PETG, PLA, and TPU—designing custom enclosures, mounts, and mechanical assemblies that integrate seamlessly with electronics.</p>
+        </div>
+        <div class="build-item">
+            <h3>Automation & Networking</h3>
+            <p>Secure VPN tunnels, Wi-Fi connectivity with auto-reconnect logic, and automated workflows for connected devices with remote monitoring capabilities.</p>
+        </div>
+        <div class="build-item">
+            <h3>Firmware Development</h3>
+            <p>Writing optimized C/C++ and Python code for microcontrollers—implementing state machines, interrupt-driven logic, and real-time control systems.</p>
+        </div>
+        <div class="build-item">
+            <h3>Full-Stack Projects</h3>
+            <p>End-to-end development from initial concept through prototyping, testing, and deployment—coordinating hardware, firmware, and mechanical design into complete systems.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <h2>See What I'm Working On</h2>
+    <p>Follow my builds on Instagram or explore past projects</p>
+    <div class="cta-buttons">
+        <a href="https://www.instagram.com/3d.designlabs/" target="_blank" rel="noopener" class="btn btn-instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            <span>Follow on Instagram</span>
+        </a>
+        <a href="projects.html" class="btn btn-primary"><span>View Projects</span></a>
+        <a href="quote.html" class="btn btn-secondary"><span>Get a Quote</span></a>
+    </div>
+</section>
 
 <footer>
-    © 2025 Michael Butler — Portfolio
+    © 2025 Michael Butler — Embedded Systems & 3D Fabrication
 </footer>
+
+<script>
+(function() {
+    var toggle = document.querySelector('.site-nav-toggle');
+    var menu = document.querySelector('.site-nav-menu');
+    var overlay = document.querySelector('.site-nav-overlay');
+    var links = document.querySelectorAll('.site-nav-menu a');
+
+    function closeMenu() {
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function openMenu() {
+        menu.classList.add('active');
+        overlay.classList.add('active');
+        toggle.classList.add('active');
+        toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    if (toggle && menu && overlay) {
+        toggle.addEventListener('click', function() {
+            if (menu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        links.forEach(function(link) {
+            link.addEventListener('click', closeMenu);
+        });
+    }
+})();
+</script>
 
 </body>
 </html>
